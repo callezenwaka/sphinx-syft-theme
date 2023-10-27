@@ -31,9 +31,10 @@ setup(
     zip_safe=True,
     include_package_data=True,
     install_requires=[
+        "sphinx<=5.0.2",
         "sphinx-book-theme>=1.0.0",
     ],
     packages=find_packages(),
     entry_points={"sphinx.html_themes": ["sphinx_syft_theme = sphinx_syft_theme"]},
-    use_scm_version={"version_scheme": "post-release", "local_scheme": "dirty-tag"},
+    # use_scm_version={"version_scheme": "post-release", "local_scheme": "dirty-tag"},
 )

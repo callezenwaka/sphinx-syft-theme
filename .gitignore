@@ -7,4 +7,5 @@ __pycache__
 /docs/reference
 /book/reference
 .github
-sphinx_syft_theme.egg-info
+src
+pyproject2.toml
