@@ -17,7 +17,11 @@ except DistributionNotFound:
 def get_html_theme_path():
     """Return list of HTML theme paths."""
     theme_path = os.path.abspath(Path(__file__).parent)
-    return theme_path
+    # print(theme_path)
+    # return theme_path
+    parent = Path(__file__).parent.resolve()
+    # theme_path = parent / "theme" / "sphinx_book_theme"
+    return parent
 
 
 def copy_config_images(app):
@@ -152,7 +156,7 @@ def copy_image(app, image):
 
 
 def setup(app: Sphinx):
-    # app.require_sphinx("5.0.0")
+    # app.require_sphinx("5.0.2")
     app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
     app.add_directive("banner", Banner)
     app.connect("builder-inited", copy_config_images)
