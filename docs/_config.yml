@@ -52,17 +52,39 @@ bibtex_bibfiles:
 sphinx:
   config:
     html_theme: sphinx_syft_theme
+    html_static_path:
+      - _static
+      - _images
+      - images
+    html_css_files:
+      - css/syft.css
     html_theme_options:
       github_url: https://github.com/callezenwaka/syft-theme
       twitter_url: https://twitter.com/openmined
       repository_url: https://github.com/callezenwaka/syft-theme
-      extra_navbar: Theme by <a href="https://openmined.org">OpenMined Syft</a>
+      # extra_navbar: Theme by <a href="https://openmined.org">OpenMined Syft</a>
+      logo:
+        image_light: images/logo-light.svg
+        # text: OpenMined # Uncomment to try text with logo
+      # external_links:
+      #   - url: https://github.com/callezenwaka/syft-theme
+      #     name: GitHub
+      #     external: True
+      #     attributes:
+      #       target: _blank
       navbar_links:
         - name: Documentation
           url: 'index#documentation'
         - name: GitHub
           url: https://github.com/callezenwaka/syft-theme
           external: True
+          attributes:
+            target: _blank
+      icon_links:
+        - name: Blog
+          url: https://blog.openmined.org
+          icon: _static/openmined.ico
+          type: url
       page_layouts:
         index: page-banner.html
         standalone: page-standalone.html
@@ -94,22 +116,6 @@ sphinx:
     html_sidebars:
       index: []
       standalone: []
-      reference/blog/*:
-        - sidebar-logo.html
-        - search-field.html
-        - postcard.html
-        - recentposts.html
-        - tagcloud.html
-        - categories.html
-        - archives.html
-        - sbt-sidebar-nav.html
-        - sbt-sidebar-footer.html
-    blog_path: reference/blog
-    blog_post_pattern: "reference/blog/*.md"
-    blog_baseurl: "https://syftbook.readthedocs.io"
-    fontawesome_included: True
-    post_auto_image: 1
-    post_auto_excerpt: 2
 
   extra_extensions:
     - ablog

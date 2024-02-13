@@ -7,5 +7,4 @@ __pycache__
 /docs/reference
 /book/reference
 .github
-src
-pyproject2.toml
+docs

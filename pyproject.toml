@@ -12,7 +12,7 @@ theme-name = "sphinx_syft_theme"
 [project]
 name = "sphinx-syft-theme"
 description = "A configurable sidebar-enabled Sphinx theme"
-version = "0.1.6"
+version = "0.2.4"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
@@ -20,7 +20,9 @@ authors = [
   {name = "Callis Ezenwaka", email = "callis@openmined.org"},
 ]
 maintainers = [
-  {name = "The Syft Developers", email = "info@openmined.org"}
+  {name = "The Syft Developers", email = "info@openmined.org"},
+  {name = "Callis Ezenwaka", email = "callis@openmined.org"},
+  {name = "Irina Bejan", email = "irina@openmined.org"},
 ]
 keywords = ["sphinx", "theme", "jupyter", "notebook", "syft"]
 
