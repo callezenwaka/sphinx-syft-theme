@@ -1,0 +1,14 @@
+{% extends '!layout.html' %} 
+
+{%- block extrahead %} 
+<!-- Hotjar Tracking Code for my site -->
+{{ super() }}
+{%- endblock %}
+
+{% block content %}
+<!-- docs_main -->
+{# A tiny helper pixel to detect if we've scrolled #}
+<!-- <div class="sbt-scroll-pixel-helper"></div> -->
+  {%- include "feedback.html" %}
+  {{ super() }}
+{% endblock %}
