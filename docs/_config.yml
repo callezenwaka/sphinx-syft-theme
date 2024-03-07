@@ -79,12 +79,12 @@ sphinx:
           url: https://github.com/callezenwaka/syft-theme
           external: True
           attributes:
-            target: _blank
+            - target: _blank
       icon_links:
         - name: Blog
           url: https://blog.openmined.org
           icon: _static/openmined.ico
-          type: url
+          type: local
       page_layouts:
         index: page-banner.html
         standalone: page-standalone.html
