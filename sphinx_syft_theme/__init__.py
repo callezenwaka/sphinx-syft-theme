@@ -1,3 +1,5 @@
+__version__ = '0.0.0'
+
 import os
 import shutil
 from pathlib import Path
@@ -6,7 +8,8 @@ from pkg_resources import get_distribution, DistributionNotFound
 from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
-from .banner import Banner
+from .components.banner import Banner
+from .components.symoji import convert_shortcodes_to_emojis
 
 try:
     __version__ = get_distribution(__name__).version
@@ -17,11 +20,7 @@ except DistributionNotFound:
 def get_html_theme_path():
     """Return list of HTML theme paths."""
     theme_path = os.path.abspath(Path(__file__).parent)
-    # print(theme_path)
-    # return theme_path
-    parent = Path(__file__).parent.resolve()
-    # theme_path = parent / "theme" / "sphinx_book_theme"
-    return parent
+    return theme_path
 
 
 def copy_config_images(app):
@@ -140,6 +139,26 @@ def add_functions_to_context(app, pagename, templatename, context, doctree):
 
     context["spt_pathto"] = spt_pathto
 
+    if 'body' in context:
+        context['body'] = convert_shortcodes_to_emojis(context['body'])
+
+    if 'secondary_sidebar_items' in context:
+        context['secondary_sidebar_items'] = [
+            convert_shortcodes_to_emojis(item) for item in context['secondary_sidebar_items']
+        ]
+
+    if 'page_toc' in context:
+        context['page_toc'] = convert_shortcodes_to_emojis(context['page_toc'])
+
+    # **Additional context update for sidebar templates (optional):**
+    # If you have a specific way to identify sidebar templates (e.g., by templatename)
+    # you can add a dedicated conversion step for those templates here.
+    # For example:
+    # if templatename == "page-toc.html":  # Replace with your actual template names
+    #     content = context.get("content")  # Assuming sidebar content is stored as "sidebar" in context
+    #     if content:
+    #         context["content"] = convert_shortcodes_to_emojis(content)
+    # return None  # This function doesn't need to return anything
 
 def copy_image(app, image):
     conf_dir = Path(app.confdir)

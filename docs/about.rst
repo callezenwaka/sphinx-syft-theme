@@ -71,6 +71,13 @@ Icons can be displayed in the top right of the navigation bar using the PyData S
 (``icon_links``) option or by using the built-in PyData Sphinx Theme
 `icon link shortcuts <https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/configuring.html#icon-link-shortcuts>`_.
 
+|:man_technologist_dark_skin_tone:| Introduction
+------------------------------------------------
+
+This is a Jupyter Book example.
+
+This text includes a man technologist :man_technologist_dark_skin_tone: and a woman technologist too! |:woman_technologist:|
+
 Footer Bar
 ----------
 

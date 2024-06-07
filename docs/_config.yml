@@ -54,7 +54,7 @@ sphinx:
     html_theme: sphinx_syft_theme
     html_static_path:
       - _static
-      - _images
+      # - _images
       - images
     html_css_files:
       - css/syft.css
