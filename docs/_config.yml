@@ -54,7 +54,6 @@ sphinx:
     html_theme: sphinx_syft_theme
     html_static_path:
       - _static
-      - _images
       - images
     html_css_files:
       - css/syft.css
@@ -120,7 +119,7 @@ sphinx:
   extra_extensions:
     - ablog
     - sphinx_click.ext
-    - sphinx_inline_tabs
+    # - sphinx_inline_tabs
     - sphinx_tabs.tabs
     - sphinx.ext.autodoc
     - sphinx.ext.todo

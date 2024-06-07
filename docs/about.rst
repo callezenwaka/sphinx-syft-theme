@@ -8,6 +8,20 @@ Sphinx Syft Theme, through the Sphinx Book Theme, inherits from the awesome
 `PyData Sphinx Theme <https://pydata-sphinx-theme.readthedocs.io/en/latest/>`_,
 which provides a great deal of functionality.
 
+|:man_technologist_light_skin_tone:| Emoji Introduction
+-------------------------------------------------------
+
+This is a Jupyter Book example on emoji.
+
+This text includes a man technologist |:man_technologist_dark_skin_tone:| and a woman technologist too! :woman_technologist:.
+
+Feel free to add more content and use emojis as needed:
+
+- Man Technologist Light Skin Tone: :man_technologist_light_skin_tone: and :man_technologist_dark_skin_tone:.
+- Woman Technologist Medium Skin Tone: :woman_technologist_medium_skin_tone:.
+
+
+
 On top of all of these amazing themes, the Sphinx Syft theme add a few simple new features.
 
 Top Navigation Bar

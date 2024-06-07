@@ -1,5 +1,3 @@
-__version__ = '0.0.0'
-
 import os
 import shutil
 from pathlib import Path
@@ -9,7 +7,6 @@ from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 from .components.banner import Banner
-from .components.symoji import convert_shortcodes_to_emojis
 
 try:
     __version__ = get_distribution(__name__).version
@@ -20,7 +17,11 @@ except DistributionNotFound:
 def get_html_theme_path():
     """Return list of HTML theme paths."""
     theme_path = os.path.abspath(Path(__file__).parent)
-    return theme_path
+    # print(theme_path)
+    # return theme_path
+    parent = Path(__file__).parent.resolve()
+    # theme_path = parent / "theme" / "sphinx_book_theme"
+    return parent
 
 
 def copy_config_images(app):
@@ -138,9 +139,6 @@ def add_functions_to_context(app, pagename, templatename, context, doctree):
             return uri
 
     context["spt_pathto"] = spt_pathto
-
-    if 'body' in context:
-        context['body'] = convert_shortcodes_to_emojis(context['body'])
 
 
 def copy_image(app, image):
