@@ -189,16 +189,15 @@ def setup(app: Sphinx):
     # Common setup configurations
     app.add_html_theme('sphinx_syft_theme', get_html_theme_path())
     app.add_directive('banner', Banner)
-    # app.config.templates_path.append('_templates')
 
+    app.config.templates_path.append('_templates')
+    
     # Call functions from symoji.py
     load_symoji_codes()
     app.add_transform(Symoji)
     app.connect('builder-inited', copy_config_images)
     app.connect('build-finished', copy_asset_files)
     app.connect('html-page-context', add_functions_to_context)
-
-    app.config.templates_path.append('_templates')
 
     # Handle emoji styles
     style = app.config._raw_config.get('emoji_style')

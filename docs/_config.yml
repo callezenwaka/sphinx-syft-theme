@@ -129,6 +129,12 @@ sphinx:
       index: []
       standalone: []
 
+  # Source suffix configuration
+  source_suffix:
+    .rst: restructuredtext
+    .md: markdown
+
+  # extensions
   extra_extensions:
     # - ablog
     - sphinx_click.ext
@@ -140,3 +146,5 @@ sphinx:
     - sphinx.ext.intersphinx
     - sphinxcontrib.bibtex
     - sphinx_book_theme
+    # - myst_parser
+    - sphinxemoji.sphinxemoji

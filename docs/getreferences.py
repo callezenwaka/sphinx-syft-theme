@@ -14,7 +14,7 @@ PREFIX = "https://api.github.com/repos/executablebooks/sphinx-book-theme"
 BRANCH = "master"
 
 
-def download_files(repo_path="docs/reference", local_path="reference"):
+def download_files(repo_path="docs/references", local_path="references"):
     files = find_files(repo_path=repo_path)
 
     for path, url in files:
@@ -31,7 +31,7 @@ def download_files(repo_path="docs/reference", local_path="reference"):
             final_path.write_text(resp.content.decode())
 
 
-def find_files(repo_path="docs/reference"):
+def find_files(repo_path="docs/references"):
     url = f"{PREFIX}/contents/{repo_path}?ref={BRANCH}"
     resp = requests.get(url)
     resp_json = resp.json()
@@ -56,7 +56,7 @@ def get_references(outdir):
         print("References already exist.  Skipping.")
         return
 
-    download_files(repo_path="docs/reference", local_path=outdir)
+    download_files(repo_path="docs/references", local_path=outdir)
     download_files(repo_path="docs/references.bib", local_path=outdir)
 
 

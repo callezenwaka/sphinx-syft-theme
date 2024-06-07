@@ -46,7 +46,9 @@ class Symoji(SphinxTransform):
 
     def __init__(self, document, startnode=None):
         super().__init__(document, startnode)
-        self.parser = self.app.registry.create_source_parser(self.app, 'rst')
+        # self.parser = self.app.registry.create_source_parser(self.app, 'rst')
+        self.rst_parser = self.app.registry.create_source_parser(self.app, 'rst')
+        # self.md_parser = self.app.registry.create_source_parser(self.app, 'md')
 
     def apply(self):
         config = self.document.settings.env.config
@@ -64,7 +66,13 @@ class Symoji(SphinxTransform):
 
                 doc = new_document(source, settings)
                 doc.reporter = LoggingReporter.from_reporter(doc.reporter)
-                self.parser.parse(text, doc)
+                # Determine the parser based on the file extension
+                # self.parser.parse(text, doc)
+                self.rst_parser.parse(text, doc)
+                # if source.endswith('.md'):
+                #     self.md_parser.parse(text, doc)
+                # else:
+                #     self.rst_parser.parse(text, doc)
 
                 substitution = doc.next_node()
                 # Remove encapsulating paragraph

@@ -28,6 +28,7 @@ templates_path = ["_templates"]
 
 extensions = [
     # "ablog",
+    # "myst_parser",
     "myst_nb",
     "sphinx_click.ext",
     "sphinx_comments",
@@ -45,7 +46,7 @@ extensions = [
     "sphinxext.opengraph",
 ]
 
-bibtex_bibfiles = ["reference/references.bib"]
+bibtex_bibfiles = ["references/references.bib"]
 
 comments_config = {"hypothesis": False, "utterances": False}
 
@@ -90,9 +91,10 @@ numfig = True
 
 panels_add_bootstrap_css = False
 
-source_suffix = {
-    ".rst": "restructuredtext",
-}
+# source_suffix = {
+#     ".rst": "restructuredtext",
+#     '.md': 'markdown',
+# }
 
 thebe_config = {
     "repository_url": "https://github.com/binder-examples/jupyter-stacks-datascience",
@@ -115,7 +117,7 @@ html_last_updated_fmt = ""
 html_sidebars = {
     "index": [],
     "standalone": [],
-    "reference/blog/*": [
+    "references/blog/*": [
         "sidebar-logo.html",
         "search-field.html",
         "postcard.html",
@@ -174,8 +176,8 @@ html_theme_options = {
     "extra_navbar": ('Theme by <a href="https://openmined.org">OpenMined Syft Project</a>'),
 }
 
-blog_path = "reference/blog"
-blog_post_pattern = "reference/blog/*.md"
+blog_path = "references/blog"
+blog_post_pattern = "references/blog/*.md"
 blog_baseurl = "https://syftbook.readthedocs.io"
 fontawesome_included = True
 post_auto_image = 1
@@ -183,4 +185,4 @@ post_auto_excerpt = 2
 
 # ==============================================================================
 
-subprocess.run([sys.executable, "getreferences.py", "./reference"])
+subprocess.run([sys.executable, "getreferences.py", "./references"])
