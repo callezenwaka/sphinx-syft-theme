@@ -8,10 +8,14 @@ Sphinx Syft Theme, through the Sphinx Book Theme, inherits from the awesome
 `PyData Sphinx Theme <https://pydata-sphinx-theme.readthedocs.io/en/latest/>`_,
 which provides a great deal of functionality.
 
+This text includes a man technologist |:man_technologist_dark_skin_tone:| and a woman technologist too! |:woman_technologist:|
+
+Don't you love it? |:woman_technologist_tone5:|
+
 On top of all of these amazing themes, the Sphinx Syft theme add a few simple new features.
 
-Top Navigation Bar
-------------------
+|:woman_technologist_tone5:| Top Navigation Bar
+-----------------------------------------------
 
 The Sphinx Syft Theme brings back the fixed top navigation bar provided by the PyData Sphinx Theme.
 Where the Sphinx Book Theme places your ``html_logo`` at the top of the left sidebar, the PyData Sphinx

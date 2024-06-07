@@ -3,6 +3,8 @@ root: index
 parts:
   - chapters:
     - file: about
+    - file: python
+    - file: glossary
     - file: standalone
 
   - caption: Reference

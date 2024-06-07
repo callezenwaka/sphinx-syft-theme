@@ -1,12 +1,17 @@
+__version__ = '0.0.0'
+
 import os
 import shutil
 from pathlib import Path
+from importlib import resources
 from pkg_resources import get_distribution, DistributionNotFound
 
 from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
+from sphinx.util.fileutil import copy_asset
 
 from .banner import Banner
+from .symoji import Symoji, load_symoji_codes, symoji_styles
 
 try:
     __version__ = get_distribution(__name__).version
@@ -17,8 +22,7 @@ except DistributionNotFound:
 def get_html_theme_path():
     """Return list of HTML theme paths."""
     theme_path = os.path.abspath(Path(__file__).parent)
-    # print(theme_path)
-    # return theme_path
+
     parent = Path(__file__).parent.resolve()
     # theme_path = parent / "theme" / "sphinx_book_theme"
     return parent
@@ -140,6 +144,17 @@ def add_functions_to_context(app, pagename, templatename, context, doctree):
 
     context["spt_pathto"] = spt_pathto
 
+def copy_asset_files(app, exc):
+    if exc is not None:  # build failed
+        return
+    asset_files = [
+        resources.files('sphinx_syft_theme') / 'symoji.js',
+        resources.files('sphinx_syft_theme') / 'symoji.css',
+    ]
+    for path in asset_files:
+        # Compatibility with Sphinx < 7.2 (Path would raise an exception)
+        path = str(path)
+        copy_asset(path, os.path.join(app.outdir, 'static'))
 
 def copy_image(app, image):
     conf_dir = Path(app.confdir)
@@ -155,17 +170,47 @@ def copy_image(app, image):
         raise FileNotFoundError(f"Image file not found: {old_img}")
 
 
+# def setup(app: Sphinx):
+#     # app.require_sphinx("5.0.2")
+#     app.add_html_theme('sphinx_syft_theme', get_html_theme_path())
+#     app.add_directive('banner', Banner)
+#     app.connect('builder-inited', copy_config_images)
+#     app.connect('html-page-context', add_functions_to_context)
+
+#     app.config.templates_path.append('_templates')
+
+#     return {
+#         "version": "0.0",
+#         "parallel_read_safe": True,
+#         "parallel_write_safe": True,
+#     }
+
 def setup(app: Sphinx):
-    # app.require_sphinx("5.0.2")
-    app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
-    app.add_directive("banner", Banner)
-    app.connect("builder-inited", copy_config_images)
-    app.connect("html-page-context", add_functions_to_context)
+    # Common setup configurations
+    app.add_html_theme('sphinx_syft_theme', get_html_theme_path())
+    app.add_directive('banner', Banner)
+    # app.config.templates_path.append('_templates')
 
-    app.config.templates_path.append("_templates")
+    # Call functions from symoji.py
+    load_symoji_codes()
+    app.add_transform(Symoji)
+    app.connect('builder-inited', copy_config_images)
+    app.connect('build-finished', copy_asset_files)
+    app.connect('html-page-context', add_functions_to_context)
 
-    return {
-        "version": "0.0",
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }
+    app.config.templates_path.append('_templates')
+
+    # Handle emoji styles
+    style = app.config._raw_config.get('emoji_style')
+    if style in symoji_styles:
+        files = symoji_styles[style]
+        source = app.config._raw_config.get('emoji_source', files['source'])
+        app.add_js_file(source)
+        for fname in files['libs']:
+            if fname.endswith('.js'):
+                app.add_js_file(fname)
+            elif fname.endswith('.css'):
+                app.add_css_file(fname)
+    
+    print (f'__version__: {__version__}')
+    return {'version': __version__, 'parallel_read_safe': True, 'parallel_write_safe': True}

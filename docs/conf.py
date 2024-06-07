@@ -27,7 +27,7 @@ templates_path = ["_templates"]
 # -- Extensions configuration ------------------------------------------------
 
 extensions = [
-    "ablog",
+    # "ablog",
     "myst_nb",
     "sphinx_click.ext",
     "sphinx_comments",

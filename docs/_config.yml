@@ -5,6 +5,7 @@ logo: images/logo-dark.svg
 author: The OpenMined Community
 copyright: "2023"
 email: callis@openmined.org
+announcement: "My announcement!"
 description: >- # this means to ignore newlines
   This is an example book built with Jupyter Books.
 
@@ -20,16 +21,17 @@ html:
   use_download_button: true
   baseurl: https://openmined.org/
 
+# Information about where the book exists on the web
 repository:
-  url: https://github.com/callezenwaka/syft-theme
+  url: https://github.com/callezenwaka/sphinx-syft-theme
   branch: main
   path_to_book: docs
 
 launch_buttons:
-  notebook_interface: "classic" # The interface interactive links will activate ["classic", "jupyterlab"]
-  binderhub_url: "https://mybinder.org"
-  colab_url: "https://colab.research.google.com"
-  thebe: true
+  notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
+  colab_url                 : https://colab.research.google.com # The URL of Google Colab (https://colab.research.google.com)
+  thebe                     : true
 
 parse:
   myst_substitutions:
@@ -52,12 +54,18 @@ bibtex_bibfiles:
 sphinx:
   config:
     html_theme: sphinx_syft_theme
+    # launch_buttons:
+      # Configure the buttons to launch Jupyter notebooks
+      # binderhub_url: "https://mybinder.org"
+      # jupyterhub_url: "https://my-jupyterhub.example.com"
+      # notebook_interface: jupyterlab
+      # thebe: true
     html_static_path:
-      - _static
-      - _images
+      # - _static
+      # - _images
       - images
-    html_css_files:
-      - css/syft.css
+    # html_css_files:
+      # - css/syft.css
     html_theme_options:
       github_url: https://github.com/callezenwaka/syft-theme
       twitter_url: https://twitter.com/openmined
@@ -74,7 +82,11 @@ sphinx:
       #       target: _blank
       navbar_links:
         - name: Documentation
-          url: 'index#documentation'
+          url: '/index.html'
+        - name: About
+          url: '/about.html'
+        - name: Glossary
+          url: '/glossary.html'
         - name: GitHub
           url: https://github.com/callezenwaka/syft-theme
           external: True
@@ -118,12 +130,13 @@ sphinx:
       standalone: []
 
   extra_extensions:
-    - ablog
+    # - ablog
     - sphinx_click.ext
-    - sphinx_inline_tabs
+    # - sphinx_inline_tabs
     - sphinx_tabs.tabs
     - sphinx.ext.autodoc
     - sphinx.ext.todo
     - sphinx.ext.autodoc
     - sphinx.ext.intersphinx
     - sphinxcontrib.bibtex
+    - sphinx_book_theme
