@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 from .components.banner import Banner
-from .components.symoji import SymojiSubstitutionTransform, convert_shortcodes_to_emojis, recursive_convert_shortcodes_to_emojis
+from .components.symoji import Symoji, convert_shortcodes_to_emojis, recursive_convert_shortcodes_to_emojis
 
 try:
     __version__ = get_distribution(__name__).version
@@ -182,7 +182,7 @@ def copy_image(app, image):
 def setup(app: Sphinx):
     # app.require_sphinx("5.0.2")
     app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
-    app.add_transform(SymojiSubstitutionTransform)
+    app.add_transform(Symoji)
     app.add_directive("banner", Banner)
     app.connect("builder-inited", copy_config_images)
     app.connect("html-page-context", add_functions_to_context)

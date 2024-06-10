@@ -8,6 +8,13 @@ Sphinx Syft Theme, through the Sphinx Book Theme, inherits from the awesome
 `PyData Sphinx Theme <https://pydata-sphinx-theme.readthedocs.io/en/latest/>`_,
 which provides a great deal of functionality.
 
+|:man_technologist_dark_skin_tone:| Introduction
+------------------------------------------------
+
+This is a Jupyter Book example.
+
+This text includes a man technologist |:man_technologist_dark_skin_tone:| and a woman technologist too! |:woman_technologist:|
+
 On top of all of these amazing themes, the Sphinx Syft theme add a few simple new features.
 
 Top Navigation Bar
@@ -70,13 +77,6 @@ Icons can be displayed in the top right of the navigation bar using the PyData S
 `icon links customization <https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/configuring.html#local-image-icons>`_
 (``icon_links``) option or by using the built-in PyData Sphinx Theme
 `icon link shortcuts <https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/configuring.html#icon-link-shortcuts>`_.
-
-|:man_technologist_dark_skin_tone:| Introduction
-------------------------------------------------
-
-This is a Jupyter Book example.
-
-This text includes a man technologist |:man_technologist_dark_skin_tone:| and a woman technologist too! |:woman_technologist:|
 
 Footer Bar
 ----------

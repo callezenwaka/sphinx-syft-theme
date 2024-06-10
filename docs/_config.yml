@@ -74,7 +74,11 @@ sphinx:
       #       target: _blank
       navbar_links:
         - name: Documentation
-          url: 'index#documentation'
+          url: '/index.html'
+        - name: About
+          url: '/about.html'
+        - name: Glossary
+          url: '/glossary.html'
         - name: GitHub
           url: https://github.com/callezenwaka/syft-theme
           external: True
@@ -116,6 +120,11 @@ sphinx:
     html_sidebars:
       index: []
       standalone: []
+
+  # Source suffix configuration
+  source_suffix:
+    - .rst: restructuredtext
+    - .md: markdown
 
   extra_extensions:
     - ablog
