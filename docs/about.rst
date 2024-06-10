@@ -76,7 +76,7 @@ Icons can be displayed in the top right of the navigation bar using the PyData S
 
 This is a Jupyter Book example.
 
-This text includes a man technologist :man_technologist_dark_skin_tone: and a woman technologist too! |:woman_technologist:|
+This text includes a man technologist |:man_technologist_dark_skin_tone:| and a woman technologist too! |:woman_technologist:|
 
 Footer Bar
 ----------

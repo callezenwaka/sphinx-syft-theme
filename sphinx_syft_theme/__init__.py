@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 from .components.banner import Banner
-from .components.symoji import convert_shortcodes_to_emojis
+from .components.symoji import SymojiSubstitutionTransform, convert_shortcodes_to_emojis, recursive_convert_shortcodes_to_emojis
 
 try:
     __version__ = get_distribution(__name__).version
@@ -150,6 +150,11 @@ def add_functions_to_context(app, pagename, templatename, context, doctree):
     if 'page_toc' in context:
         context['page_toc'] = convert_shortcodes_to_emojis(context['page_toc'])
 
+    # Process secondary_sidebar_items if they include page_toc
+    if 'secondary_sidebar_items' in context:
+        context['secondary_sidebar_items'] = recursive_convert_shortcodes_to_emojis(context['secondary_sidebar_items'])
+
+
     # **Additional context update for sidebar templates (optional):**
     # If you have a specific way to identify sidebar templates (e.g., by templatename)
     # you can add a dedicated conversion step for those templates here.
@@ -177,6 +182,7 @@ def copy_image(app, image):
 def setup(app: Sphinx):
     # app.require_sphinx("5.0.2")
     app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
+    app.add_transform(SymojiSubstitutionTransform)
     app.add_directive("banner", Banner)
     app.connect("builder-inited", copy_config_images)
     app.connect("html-page-context", add_functions_to_context)
