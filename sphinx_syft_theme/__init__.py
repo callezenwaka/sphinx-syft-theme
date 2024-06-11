@@ -142,11 +142,6 @@ def add_functions_to_context(app, pagename, templatename, context, doctree):
     if 'body' in context:
         context['body'] = convert_shortcodes_to_emojis(context['body'])
 
-    if 'secondary_sidebar_items' in context:
-        context['secondary_sidebar_items'] = [
-            convert_shortcodes_to_emojis(item) for item in context['secondary_sidebar_items']
-        ]
-
     if 'page_toc' in context:
         context['page_toc'] = convert_shortcodes_to_emojis(context['page_toc'])
 
@@ -154,16 +149,7 @@ def add_functions_to_context(app, pagename, templatename, context, doctree):
     if 'secondary_sidebar_items' in context:
         context['secondary_sidebar_items'] = recursive_convert_shortcodes_to_emojis(context['secondary_sidebar_items'])
 
-
-    # **Additional context update for sidebar templates (optional):**
-    # If you have a specific way to identify sidebar templates (e.g., by templatename)
-    # you can add a dedicated conversion step for those templates here.
-    # For example:
-    # if templatename == "page-toc.html":  # Replace with your actual template names
-    #     content = context.get("content")  # Assuming sidebar content is stored as "sidebar" in context
-    #     if content:
-    #         context["content"] = convert_shortcodes_to_emojis(content)
-    # return None  # This function doesn't need to return anything
+    return None  # This function doesn't need to return anything
 
 def copy_image(app, image):
     conf_dir = Path(app.confdir)
@@ -181,8 +167,8 @@ def copy_image(app, image):
 
 def setup(app: Sphinx):
     # app.require_sphinx("5.0.2")
-    app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
     app.add_transform(Symoji)
+    app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
     app.add_directive("banner", Banner)
     app.connect("builder-inited", copy_config_images)
     app.connect("html-page-context", add_functions_to_context)

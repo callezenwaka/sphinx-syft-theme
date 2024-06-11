@@ -1,0 +1,20 @@
+{
+    "results": [
+        {
+            "name": "openmined",
+            "value": "https://emoji.slack-edge.com/T6963A864/openmined/5497ff65bc032c23.png",
+            "updated": 1502826545
+        },
+        {
+            "name": "openmined2",
+            "value": "https://emoji.slack-edge.com/T6963A864/openmined2/0ce3ebd7a9d28deb.gif",
+            "updated": 1507204241
+        },
+        {
+            "name": "openmined3",
+            "value": "https://emoji.slack-edge.com/T6963A864/openmined3/ec21e98fb1308ce4.gif",
+            "updated": 1520539085
+        }
+    ],
+    "ok": true
+}

@@ -3,7 +3,7 @@ Sphinx Syft Theme
 
 .. banner::
    :color: rgba(40,40,60,0.8)
-   :image: images/pexels-jeff-stapleton-5792818.jpg
+   :image: _static/images/pexels-jeff-stapleton-5792818.jpg
    :caption: Photo by Jeff Stapleton from Pexels
    :class: dark-banner
 
@@ -48,8 +48,14 @@ text exactly the same way as the *banner* layout, but it does not separate out
 the sections into separate "banners."  The heading fonts and styling
 are the same.
 
-Documentation
--------------
+Glossary
+--------
+
+The Sphinx Syft Theme brings back the fixed top navigation bar provided by the PyData Sphinx Theme.
+Where the Sphinx Book Theme places your ``html_logo`` at the top of the left sidebar, the PyData Sphinx
+Theme places the logo on the left of the top navigation bar.  The PyData Sphinx Theme allows the user
+to set the link attached to the logo with the ``logo_link`` option in your Sphinx ``html_theme_options``
+dictionary.
 
 .. rst-class:: text-center
 
@@ -58,10 +64,10 @@ Documentation
 .. raw:: html
 
    <span class="d-flex justify-content-center py-4">
-     <a href="about.html" role="button" class="btn btn-primary btn-lg">
-       Read the documentation
+     <a href="glossary.html" role="button" class="btn btn-light btn-lg">
+       Read the documentation glossary
      </a>
    </span>
 
-.. |jbook| image:: images/badge.svg
+.. |jbook| image:: _static/images/badge.svg
    :target: https://jupyterbook.org

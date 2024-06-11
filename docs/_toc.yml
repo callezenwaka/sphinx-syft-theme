@@ -3,13 +3,14 @@ root: index
 parts:
   - chapters:
     - file: about
+    - file: restructured
     - file: glossary
     - file: standalone
 
   - caption: Reference
     chapters:
     - file: references
-    - file: reference/special-theme-elements
-    - file: reference/kitchen-sink/index
-    - file: reference/notebooks
-    - file: reference/thebe
+    - file: references/special-theme-elements
+    - file: references/kitchen-sink/index
+    - file: references/notebooks
+    - file: references/thebe
