@@ -139,6 +139,18 @@ def add_functions_to_context(app, pagename, templatename, context, doctree):
 
     context["spt_pathto"] = spt_pathto
 
+    # if 'body' in context:
+    #     context['body'] = convert_shortcodes_to_emojis(context['body'])
+
+    # if 'page_toc' in context:
+    #     context['page_toc'] = convert_shortcodes_to_emojis(context['page_toc'])
+
+    # # Process secondary_sidebar_items if they include page_toc
+    # if 'secondary_sidebar_items' in context:
+    #     context['secondary_sidebar_items'] = recursive_convert_shortcodes_to_emojis(context['secondary_sidebar_items'])
+
+    # return None  # This function doesn't need to return anything
+
     if 'body' in context:
         context['body'] = convert_shortcodes_to_emojis(context['body'])
 
@@ -167,6 +179,7 @@ def copy_image(app, image):
 
 def setup(app: Sphinx):
     # app.require_sphinx("5.0.2")
+    app.add_css_file('css/custom.css')
     app.add_transform(Symoji)
     app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
     app.add_directive("banner", Banner)
