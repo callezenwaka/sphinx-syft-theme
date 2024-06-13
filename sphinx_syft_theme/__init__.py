@@ -16,12 +16,10 @@ try:
 except DistributionNotFound:
     __version__ = "0.0.0"
 
-
 def get_html_theme_path():
     """Return list of HTML theme paths."""
     theme_path = os.path.abspath(Path(__file__).parent)
     return theme_path
-
 
 def copy_config_images(app):
     if hasattr(app.config, "html_theme_options"):
@@ -45,7 +43,6 @@ def copy_config_images(app):
                 logos_config[key]["image"] = image
             else:
                 logos_config[key] = image
-
 
 def add_functions_to_context(app, pagename, templatename, context, doctree):
     def _denest_sections(html):
@@ -154,7 +151,6 @@ def copy_image(app, image):
     else:
         raise FileNotFoundError(f"Image file not found: {old_img}")
 
-
 def setup(app: Sphinx):
     # app.require_sphinx("5.0.2")
     app.add_css_file('css/custom.css')
@@ -163,6 +159,9 @@ def setup(app: Sphinx):
     app.add_directive("banner", Banner)
     app.connect("builder-inited", copy_config_images)
     app.connect("html-page-context", add_functions_to_context)
+
+    app.add_config_value('custom_image_paths', [], 'env')
+    app.add_config_value('custom_shortcode_to_image', {}, 'env')
 
     app.config.templates_path.append("_templates")
 
