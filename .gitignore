@@ -7,4 +7,5 @@ __pycache__
 /docs/reference
 /book/reference
 .github
+.DS_Store
 # docs
