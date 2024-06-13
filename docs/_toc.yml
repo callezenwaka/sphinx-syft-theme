@@ -2,11 +2,11 @@ format: jb-book
 root: index
 parts:
   - chapters:
-    # - file: about
+    - file: about
     - file: contact
     - file: restructured
-    # - file: glossary
-    - file: standalone
+    - file: glossary
+    # - file: standalone
 
   - caption: Reference
     chapters:

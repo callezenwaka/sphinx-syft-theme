@@ -18,24 +18,14 @@ SHORTCODE_TO_UNICODE = {
     '|:woman_technologist_medium_dark_skin_tone:|': '👩🏾‍💻',
     '|:woman_technologist_medium_light_skin_tone:|': '👩🏼‍💻',
     '|:woman_technologist_medium_skin_tone:|': '👩🏽‍💻',
-    # Add custom images
-    # '|:custom_emoji:|': '<img src="_static/images/custom_emoji.png" alt="custom emoji" style="width: 20px; height: 20px;">'
-    # '|:openmined1:|': '<img src="_static/images/openmined1.png" alt="openmined1 emoji" style="width: 20px; height: 20px;>',
-    # '|:openmined1:|': '![openmined1 emoji](_static/images/openmined1.png)',
-    # '|:openmined1:|': '_static/images/openmined1.png',
-    # '|:openmined2:|': '<img src="_static/images/openmined2.gif" alt="openmined2 emoji" style="width: 20px; height: 20px;>',
-    # '|:openmined3:|': '<img src="_static/images/openmined3.gif" alt="openmined3 emoji">'
 }
 
+ # Add custom images
 SHORTCODE_TO_IMAGE = {
     '|:openmined1:|': '_static/images/openmined1.png',
     '|:openmined2:|': '_static/images/openmined2.gif',
     '|:openmined4:|': '_static/images/openmined4.svg',
 }
-
-# def convert_shortcodes_to_emojis(text):
-#     pattern = re.compile(r'\|:(\w+?):\|')
-#     return pattern.sub(lambda match: SHORTCODE_TO_UNICODE.get(f'|:{match.group(1)}:|', match.group(0)), text)
 
 def convert_shortcodes_to_emojis(text):
     pattern = re.compile(r'(\|\:\w+?\:\|)')
@@ -50,16 +40,7 @@ def recursive_convert_shortcodes_to_emojis(item):
         return {key: recursive_convert_shortcodes_to_emojis(value) for key, value in item.items()}
     return item
 
-# Define symoji class
-# class Symoji(SphinxTransform):
-#     default_priority = 211
-
-#     def apply(self):
-#         for node in self.document.traverse(nodes.title):
-#             node.replace_self(nodes.title('', convert_shortcodes_to_emojis(node.astext())))
-
-
-# ===================== New Codes ===================
+# Define  
 def convert_shortcodes_to_nodes(text):
     pattern = re.compile(r'(\|\:\w+?\:\|)')
     parts = pattern.split(text)
@@ -90,17 +71,3 @@ class Symoji(SphinxTransform):
 
     def apply(self):
         recursive_convert_shortcodes_to_emojis(self.document)
-
-    # def apply(self):
-    #     for node in self.document.traverse(nodes.title):
-    #         node.replace_self(nodes.title('', convert_shortcodes_to_emojis(node.astext())))
-
-# class Symoji(SphinxTransform):
-#     default_priority = 211
-
-#     def apply(self):
-#         recursive_convert_shortcodes_to_emojis(self.document)
-
-# def setup(app):
-#     app.add_transform(Symoji)
-#     # app.add_css_file('css/custom.css')

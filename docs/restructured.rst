@@ -10,12 +10,12 @@ which provides a great deal of functionality.
 
 On top of all of these amazing themes, the Sphinx Syft theme add a few simple new features.
 
-|:man_technologist_dark_skin_tone:| Introduction
-------------------------------------------------
+Introduction
+------------
 
 This is a Jupyter Book example.
 
-This text includes a man technologist |:man_technologist_dark_skin_tone:| and a woman technologist too! |:woman_technologist:|
+This text includes a man technologist and a woman technologist too!
 
 
 Top Navigation Bar

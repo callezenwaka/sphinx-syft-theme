@@ -1,6 +1,6 @@
 #######################################################################################
 # Book settings
-title: ""
+title: "Sphinx-Syft-Theme"
 logo: _static/images/dummy_logo_dark.svg
 author: The OpenMined Community
 copyright: "2023"
@@ -85,12 +85,12 @@ sphinx:
       navbar_links:
         - name: Documentation
           url: '/index.html'
-        # - name: About
-        #   url: '/about.html'
+        - name: About
+          url: '/about.html'
         - name: Contact
           url: '/contact.html'
-        # - name: Glossary
-        #   url: '/glossary.html'
+        - name: Glossary
+          url: '/glossary.html'
         - name: GitHub
           url: https://github.com/callezenwaka/syft-theme
           external: True
@@ -101,12 +101,12 @@ sphinx:
           url: https://blog.openmined.org
           icon: _static/favicon.ico
           type: local
-      custom_image_paths:
-        - "_static/images/alice.svg"
-        - "_static/images/bob.svg"
-      custom_shortcode_to_image:
-        "|:persona_alice:|": "_static/images/alice.svg"
-        "|:persona_bob:|": "_static/images/bob.svg"
+      # custom_image_paths:
+      #   - "_static/images/alice.svg"
+      #   - "_static/images/bob.svg"
+      # custom_shortcode_to_image:
+      #   "|:persona_alice:|": "_static/images/alice.svg"
+      #   "|:persona_bob:|": "_static/images/bob.svg"
       # page_layouts:
       #   index: page-banner.html
       #   standalone: page-standalone.html

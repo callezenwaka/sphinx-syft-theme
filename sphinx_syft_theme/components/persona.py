@@ -1,71 +1,43 @@
-# sphinx_syft_theme/components/persona.py:
-
 import re
-from pathlib import Path
 from docutils import nodes
 from sphinx.transforms import SphinxTransform
-from sphinx.util.nodes import get_prev_node
+from docutils import nodes
 
-SHORTCODE_TO_IMAGE = {}
+ # Add custom images
+SHORTCODE_TO_IMAGE = {
+    '|:openmined1:|': '_static/images/openmined1.png',
+    '|:openmined2:|': '_static/images/openmined2.gif',
+    '|:openmined3:|': '_static/images/openmined3.gif',
+    '|:openmined4:|': '_static/images/openmined4.svg',
+}
 
-def set_shortcode_to_image(shortcode_to_image):
-    global SHORTCODE_TO_IMAGE
-    SHORTCODE_TO_IMAGE = shortcode_to_image
-
-def convert_shortcodes_to_nodes(text):
+# Define  
+def convert_shortcodes_in_text(text):
     pattern = re.compile(r'(\|\:\w+?\:\|)')
     parts = pattern.split(text)
     result = []
 
     for part in parts:
         if part in SHORTCODE_TO_IMAGE:
-            image_path = SHORTCODE_TO_IMAGE[part]
-            image_node = nodes.image(uri="_images/" + Path(image_path).name, alt=part, classes=['custom-emoji'])
+            image_node = nodes.image(uri=SHORTCODE_TO_IMAGE[part], alt=part, classes=['custom-emoji'])
             result.append(image_node)
         else:
             result.append(nodes.Text(part))
     
     return result
 
-def recursive_convert_shortcodes_to_emojis(node):
+def convert_shortcodes_to_nodes(node):
     if isinstance(node, nodes.Text):
-        new_nodes = convert_shortcodes_to_nodes(node.astext())
-        node.parent.replace(node, new_nodes)
+        new_nodes = convert_shortcodes_in_text(node.astext())
+        for new_node in new_nodes:
+            node.parent.insert(node.parent.index(node), new_node)
+        node.parent.remove(node)
     elif isinstance(node, nodes.Element):
-        for child in node.children:
-            recursive_convert_shortcodes_to_emojis(child)
-
-# def check_and_insert_image(node):
-#     if isinstance(node, nodes.section):
-#         prev_sibling = node.prev_sibling
-#         if isinstance(prev_sibling, nodes.Text):
-#             for shortcode in SHORTCODE_TO_IMAGE:
-#                 if shortcode in prev_sibling.astext():
-#                     image_path = SHORTCODE_TO_IMAGE[shortcode]
-#                     image_node = nodes.image(uri="_images/" + Path(image_path).name, alt=shortcode, classes=['custom-emoji'])
-#                     node.insert(0, image_node)
-#                     break
-
-
-def check_and_insert_image(node):
-    if isinstance(node, nodes.section):
-        prev_node = node
-        while prev_node:
-            prev_node = get_prev_node(prev_node)
-            if isinstance(prev_node, nodes.Text):
-                text = prev_node.astext()
-                for shortcode in SHORTCODE_TO_IMAGE:
-                    if shortcode in text:
-                        image_path = SHORTCODE_TO_IMAGE[shortcode]
-                        image_node = nodes.image(uri="_images/" + Path(image_path).name, alt=shortcode, classes=['custom-emoji'])
-                        node.insert(0, image_node)
-                        break
-                break
+        for child in list(node.children):  # Use a copy of the list for safe iteration
+            convert_shortcodes_to_nodes(child)
 
 class Persona(SphinxTransform):
     default_priority = 211
 
     def apply(self):
-        for node in self.document.traverse(nodes.Element):
-            recursive_convert_shortcodes_to_emojis(node)
-            check_and_insert_image(node)
+        convert_shortcodes_to_nodes(self.document)
