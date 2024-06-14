@@ -1,4 +1,4 @@
-__version__ = '0.0.0'
+__version__ = '0.2.5'
 
 import os
 import shutil
@@ -166,7 +166,7 @@ def setup(app: Sphinx):
     app.config.templates_path.append("_templates")
 
     return {
-        "version": "0.0",
+        "version": __version__,
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
