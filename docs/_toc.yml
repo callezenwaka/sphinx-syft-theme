@@ -15,6 +15,6 @@ parts:
     - file: references/notebooks
     - file: references/thebe
 
-    # - caption: User Experience
-    #   chapters:
-    #   - file: standalone
+  - caption: User Experience
+    chapters:
+    - file: standalone
