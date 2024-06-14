@@ -3,10 +3,9 @@ root: index
 parts:
   - chapters:
     - file: about
-    - file: contact
+    - file: persona
     - file: restructured
     - file: glossary
-    # - file: standalone
 
   - caption: Reference
     chapters:
@@ -15,3 +14,7 @@ parts:
     - file: references/kitchen-sink/index
     - file: references/notebooks
     - file: references/thebe
+
+    # - caption: User Experience
+    #   chapters:
+    #   - file: standalone
