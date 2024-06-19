@@ -42,7 +42,7 @@ html:
   use_download_button: true
 
 repository:
-  url: https://github.com/callezenwaka/syft-theme
+  url: https://github.com/callezenwaka/sphinx-syft-theme
   branch: main
   path_to_book: docs
 
@@ -80,10 +80,11 @@ sphinx:
     html_css_files:
       - css/syft.css
     html_theme_options:
-      github_url: https://github.com/callezenwaka/syft-theme
+      github_url: https://github.com/callezenwaka/sphinx-syft-theme
       twitter_url: https://twitter.com/callezenwaka
-      repository_url: https://github.com/callezenwaka/syft-theme
+      repository_url: https://github.com/callezenwaka/sphinx-syft-theme
       # extra_navbar: Theme by <a href="https://openmined.org">OpenMined Syft</a>
+      announcement: "⚠️The latest release is live here <a href='https://pypi.org/project/sphinx-syft-theme/0.2.6/' target: _blank>sphinx-syft-theme </a> ⚠️"
       logo:
         image_light: _static/images/dummy_logo_light.svg
         text: Syft-Theme # Uncomment to try text with logo
@@ -100,11 +101,11 @@ sphinx:
           url: '/about.html'
         - name: Glossary
           url: '/glossary.html'
-        - name: GitHub
-          url: https://github.com/callezenwaka/syft-theme
-          external: True
-          attributes:
-            - target: _blank
+        # - name: GitHub
+        #   url: https://github.com/callezenwaka/syft-theme
+        #   external: True
+        #   attributes:
+        #     - target: _blank
       icon_links:
         - name: Blog
           url: https://blog.openmined.org
