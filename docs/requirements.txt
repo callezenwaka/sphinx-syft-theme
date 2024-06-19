@@ -6,4 +6,5 @@ pandas
 sphinx-click
 sphinx-panels
 sphinx-inline-tabs
+sphinx-syft-theme
 sphinxext-opengraph
