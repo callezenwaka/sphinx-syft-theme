@@ -98,8 +98,6 @@ sphinx:
           url: '/index.html'
         - name: About
           url: '/about.html'
-        # - name: Persona
-        #   url: '/persona.html'
         - name: Glossary
           url: '/glossary.html'
         - name: GitHub
@@ -113,11 +111,11 @@ sphinx:
           icon: _static/favicon.ico
           type: local
       custom_image_paths:
-        - "_static/images/alice.svg"
-        - "_static/images/bob.svg"
+        - "/_static/images/alice.svg"
+        - "/_static/images/bob.svg"
       custom_shortcode_to_image:
-        "|:persona_alice:|": "_static/images/alice.svg"
-        "|:persona_bob:|": "_static/images/bob.svg"
+        "|:persona_alice:|": "/_static/images/alice.svg"
+        "|:persona_bob:|": "/_static/images/bob.svg"
       # page_layouts:
       #   index: page-banner.html
       #   standalone: page-standalone.html
