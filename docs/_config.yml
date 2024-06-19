@@ -84,6 +84,7 @@ sphinx:
       twitter_url: https://twitter.com/callezenwaka
       repository_url: https://github.com/callezenwaka/sphinx-syft-theme
       # extra_navbar: Theme by <a href="https://openmined.org">OpenMined Syft</a>
+      announcement: "⚠️The latest release refactored our HTML, so double-check your custom CSS rules!⚠️"
       logo:
         image_light: _static/images/dummy_logo_light.svg
         text: Syft-Theme # Uncomment to try text with logo
