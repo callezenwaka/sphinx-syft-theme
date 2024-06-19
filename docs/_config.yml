@@ -1,24 +1,45 @@
 #######################################################################################
 # Book settings
-title: ""
-logo: images/logo-dark.svg
+title: "Sphinx-Syft-Theme"
+logo: _static/images/dummy_logo_dark.svg
 author: The OpenMined Community
 copyright: "2023"
 email: callis@openmined.org
 description: >- # this means to ignore newlines
   This is an example book built with Jupyter Books.
 
+only_build_toc_files: true
+
 execute:
+  # See https://jupyterbook.org/content/execute.html
   execute_notebooks: cache
+  #   "auto" should only execute those notebooks that don't have output in all cells.
+  #   "force" : force execution of all notebooks
+  #   "cache": Cache output of notebooks on each build.
+  timeout: 800
+  # Cells that are expected to fail (for pedagogical reasons) should set the cell tag `raises-exceptions`
+  # allow_errors: False
+  exclude_patterns:
+  - README.md
+  - sphinx_syft_theme
+  - build/
+  - dist/
+  - setup.py
+  - setup.cfg
+  - pyproject.toml
+  - PKG-INFO
+  - MANIFEST.in
+  - LICENSE
+  - .gitignore
+  # - *.egg-info
 
 html:
-  favicon: images/favicon.ico
+  favicon: _static/images/favicon.ico
   home_page_in_navbar: false
   use_edit_page_button: true
   use_repository_button: true
   use_issues_button: true
   use_download_button: true
-  baseurl: https://openmined.org/
 
 repository:
   url: https://github.com/callezenwaka/syft-theme
@@ -54,18 +75,18 @@ sphinx:
     html_theme: sphinx_syft_theme
     html_static_path:
       - _static
-      - _images
-      - images
+      # - _images
+      # - images
     html_css_files:
       - css/syft.css
     html_theme_options:
       github_url: https://github.com/callezenwaka/syft-theme
-      twitter_url: https://twitter.com/openmined
+      twitter_url: https://twitter.com/callezenwaka
       repository_url: https://github.com/callezenwaka/syft-theme
       # extra_navbar: Theme by <a href="https://openmined.org">OpenMined Syft</a>
       logo:
-        image_light: images/logo-light.svg
-        # text: OpenMined # Uncomment to try text with logo
+        image_light: _static/images/dummy_logo_light.svg
+        text: Syft-Theme # Uncomment to try text with logo
       # external_links:
       #   - url: https://github.com/callezenwaka/syft-theme
       #     name: GitHub
@@ -74,7 +95,13 @@ sphinx:
       #       target: _blank
       navbar_links:
         - name: Documentation
-          url: 'index#documentation'
+          url: '/index.html'
+        - name: About
+          url: '/about.html'
+        # - name: Persona
+        #   url: '/persona.html'
+        - name: Glossary
+          url: '/glossary.html'
         - name: GitHub
           url: https://github.com/callezenwaka/syft-theme
           external: True
@@ -83,15 +110,21 @@ sphinx:
       icon_links:
         - name: Blog
           url: https://blog.openmined.org
-          icon: _static/openmined.ico
+          icon: _static/favicon.ico
           type: local
-      page_layouts:
-        index: page-banner.html
-        standalone: page-standalone.html
+      custom_image_paths:
+        - "_static/images/alice.svg"
+        - "_static/images/bob.svg"
+      custom_shortcode_to_image:
+        "|:persona_alice:|": "_static/images/alice.svg"
+        "|:persona_bob:|": "_static/images/bob.svg"
+      # page_layouts:
+      #   index: page-banner.html
+      #   standalone: page-standalone.html
       footer_logos:
-        NCAR: images/NCAR-contemp-logo-blue.svg
-        Unidata: images/Unidata_logo_horizontal_1200x300.svg
-        UAlbany: images/UAlbany-A2-logo-purple-gold.svg
+        logo1: _static/images/d_logo_dark.svg
+        logo2: _static/images/d_logo_dark.svg
+        logo3: _static/images/d_logo_dark.svg
       footer_menu:
         - title: "More about..."
           items:
@@ -101,29 +134,23 @@ sphinx:
               url: https://openmined.org/
             - name: OpenMined
               url: https://openmined.org/
-        - title: "Let us know..."
-          items:
-            - name: Submit an issue on GitHub
-              url: https://github.com/callezenwaka/syft-theme/issues/new?title=Issue%20with%20Syft%20Theme&body=Your%20issue%20content%20here.
-            - name: Feedback to OpenMined Syft
-              url: https://openmined.org
-        - title: "Join the community"
-          items:
-            - name: Contributor's Guide
-              url: https://openmined.org
-            - name: Our GitHub Organization
-              url: https://github.com/callezenwaka
     html_sidebars:
       index: []
       standalone: []
 
+  # Source suffix configuration
+  source_suffix:
+    - .rst: restructuredtext
+    - .md: markdown
+
   extra_extensions:
     - ablog
     - sphinx_click.ext
-    - sphinx_inline_tabs
+    # - sphinx_inline_tabs
     - sphinx_tabs.tabs
     - sphinx.ext.autodoc
     - sphinx.ext.todo
     - sphinx.ext.autodoc
     - sphinx.ext.intersphinx
     - sphinxcontrib.bibtex
+    # - sphinx_syft_theme.components.symoji
