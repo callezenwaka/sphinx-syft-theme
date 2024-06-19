@@ -146,8 +146,8 @@ sphinx:
   extra_extensions:
     - ablog
     - sphinx_click.ext
-    # - sphinx_inline_tabs
-    - sphinx_tabs.tabs
+    - sphinx_inline_tabs
+    # - sphinx_tabs.tabs
     - sphinx.ext.autodoc
     - sphinx.ext.todo
     - sphinx.ext.autodoc
