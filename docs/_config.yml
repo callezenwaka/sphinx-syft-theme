@@ -68,7 +68,7 @@ parse:
     - substitution
 
 bibtex_bibfiles:
-  - reference/references.bib
+  - references.bib
 
 sphinx:
   config:
