@@ -17,7 +17,7 @@ def convert_shortcodes_in_text(text, shortcode_to_image):
 
     for part in parts:
         if part in shortcode_to_image:
-            image_node = nodes.image(uri=shortcode_to_image[part], alt=part, classes=['custom-emoji'])
+            image_node = nodes.image(uri=shortcode_to_image[part], alt=part, classes=['persona'])
             result.append(image_node)
         else:
             result.append(nodes.Text(part))

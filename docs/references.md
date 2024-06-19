@@ -10,3 +10,7 @@ content.
 This is a Jupyter Book example.
 
 This text includes a man technologist and a woman technologist too!
+
+## |:persona_bob:| Bob Custom Symoji
+
+On top of all of these amazing themes, the Sphinx Syft theme add a few simple new custom features like OpenMined Symoji.
