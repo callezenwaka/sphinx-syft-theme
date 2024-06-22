@@ -80,6 +80,7 @@ sphinx:
     html_css_files:
       - css/syft.css
     html_theme_options:
+      theme_hotjar_id: "YOUR_HOTJAR_ID"
       github_url: https://github.com/callezenwaka/sphinx-syft-theme
       twitter_url: https://twitter.com/callezenwaka
       repository_url: https://github.com/callezenwaka/sphinx-syft-theme
@@ -87,7 +88,7 @@ sphinx:
       announcement: "⚠️The latest release is live here <a href='https://pypi.org/project/sphinx-syft-theme/0.2.6/' target: _blank>sphinx-syft-theme </a> ⚠️"
       logo:
         image_light: _static/images/dummy_logo_light.svg
-        text: Syft-Theme # Uncomment to try text with logo
+        text: Theme # Uncomment to try text with logo
       # external_links:
       #   - url: https://github.com/callezenwaka/syft-theme
       #     name: GitHub
@@ -112,11 +113,9 @@ sphinx:
           icon: _static/favicon.ico
           type: local
       custom_image_paths:
-        - "/_static/images/alice.svg"
-        - "/_static/images/bob.svg"
+        - "/_static/images/persona.png"
       custom_shortcode_to_image:
-        "|:persona_alice:|": "/_static/images/alice.svg"
-        "|:persona_bob:|": "/_static/images/bob.svg"
+        "|:persona:|": "/_static/images/persona.png"
       # page_layouts:
       #   index: page-banner.html
       #   standalone: page-standalone.html
