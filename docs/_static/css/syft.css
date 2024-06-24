@@ -69,11 +69,6 @@
   padding: 1rem;
   box-shadow: rgba(149, 157, 165, 0.7) 0px 8px 24px;
   box-shadow: rgba(149, 157, 165, 1) 0px 4px 48px;
-  /* background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
-  background-position: 0 0;
-  cursor: pointer;
-  transition: background-position 1s steps(28);
-  transition-duration: 0s; */
 }
 
 .feedback--container.active {
@@ -227,7 +222,7 @@
   font-size: inherit;
   line-height: 3rem;
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--pst-color-text-base);
   outline: none;
   padding-left: 10px;
   margin-top: 5px;
@@ -273,18 +268,16 @@
   transition: all 1s ease-out;
 }
 
-/* .form--button.danger {
-  background-color: var(--background-color-danger);
-} */
-
-/* .form--button:hover {
-  filter: drop-shadow(0 0 1.5rem var(--drop-shadow-primary));
-} */
+.feedback--svg {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+}
 
 .form--svgcheck {
   display: none;
   vertical-align: baseline;
-  width: 1.5rem;
+  width: 5rem;
 }
 
 .form--svgcheck.active {
@@ -330,10 +323,9 @@
   height: auto;
   border-radius: 20px;
   overflow: hidden;
-  /* box-shadow: 1px 1px 5px #818181; */
-  /* -webkit-box-shadow: 1px 1px 5px #818181; */
-  box-shadow: 1px 1px 5px #818181;
+  -webkit-box-shadow: 1px 1px 5px #818181;
   -moz-box-shadow: 1px 1px 5px #818181;
+  box-shadow: 1px 1px 5px #818181;
 }
 
 @media only screen and (min-width: 964px) {

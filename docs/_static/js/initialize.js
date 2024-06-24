@@ -1,8 +1,8 @@
-/**
- * Define constants and functions
- */
-
+// Define constants and functions
 const YEAR = new Date().getFullYear();
+// let FEEDBACK = false;
+// Set a boolean value
+// sessionStorage.setItem("FEEDBACK", false);
 const { origin, pathname } = location;
 const { host, hostname, port } = new URL(origin);
 const ENV = ['localhost', '127.0.0.1'].includes(hostname)? `dev` : `prod`;
@@ -35,13 +35,14 @@ async function buildNavigation() {
 
   const feedbackForm = document.querySelector("#feedback--form");
   feedbackForm.addEventListener("submit", async function (event) {
-    event.preventDefault(); // Prevent the default form submission
+    // Prevent the default form submission
+    event.preventDefault(); 
     // Your code here
     var baseSubmitURL = 'https://api.hsforms.com/submissions/v3/integration/submit'
     // Add the HubSpot portalID where the form should submit
-    var portalId = '495859348'
+    var portalId = '<PORTAL_ID>'
     // Add the HubSpot form GUID from your HubSpot portal
-    var formGuid = '39584hhdkjg-3343-496h-t433-dfvjfvh385b3823' //replace with the formGUID copied from the form created inside HubSpot Forms
+    var formGuid = '<FORM_GUID>' //replace with the formGUID copied from the form created inside HubSpot Forms
     // Build request URL
     var submitURL = `${baseSubmitURL}/${portalId}/${formGuid}`
     // Handle the form data
@@ -111,47 +112,37 @@ async function submitHSForm(hsFormURL) {
   const formElement = document.querySelector("#feedback--form");
   const formData = await prepareHSFormSubmission(formElement);
 
-  const data = await postData(hsFormURL, formData);
-  // console.log('data: ', data);
+  // const data = await postData(hsFormURL, formData);
+  const data = { inlineMessage: 'Thank you' };
   if(data.inlineMessage){
     // Set an inline thank you message
-    // document.querySelector("#thankyou").innerHTML = data.inlineMessage 
+    // document.querySelector("#thankyou").innerHTML = data.inlineMessage
     const formsvgCheck = document.getElementById("form--svgcheck");
     formsvgCheck.classList.toggle("active");
+
     setTimeout(function () {
       // change checkmark
       formsvgCheck.classList.toggle("active");
-    }, 1000);
+    }, 1500);
   };
-  // 
-  document.getElementById('rating').value = 'yes';
+  // Reset feedback for
   document.getElementById('problem').value = 'no_problem';
-  document.getElementById('description').value = '';
-  document.getElementById('email').value = '';
 };
 
-document.addEventListener('mouseleave', (event) => {
+document.addEventListener('mouseleave', function mouseLeave(event) {
   const feedbackContainer = document.getElementById("feedback--container");
-  if (event.clientY <= 0 && !feedbackContainer.classList.contains('active')) {
+
+  // Retrieve the value (convert back to boolean)
+  const FEEDBACK = JSON.parse(sessionStorage.getItem("FEEDBACK")) || false;
+
+  if (event.clientY <= 0 && !feedbackContainer.classList.contains('active') && !FEEDBACK) {
     // make sound
-    // feedbackBeep();
+    feedbackBeep();
+    // toggle feedback form
     toggleFeebackForm(event);
+    // Set a boolean value
+    sessionStorage.setItem("FEEDBACK", true);
   }
 });
 
-// document.addEventListener("locationchange", buildNavigation);
-
-
 document.addEventListener("DOMContentLoaded", buildNavigation);
-
-// window.addEventListener('beforeunload', function(event) {
-//   // Cancel the event to prevent the browser from closing immediately
-//   event.preventDefault();
-//   // Chrome requires the returnValue property to be set
-//   event.returnValue = '';
-
-//   // Display a confirmation message
-//   var confirmationMessage = 'Are you sure you want to leave this page?';
-//   (event || window.event).returnValue = confirmationMessage; // For IE and Firefox
-//   return confirmationMessage;
-// });
