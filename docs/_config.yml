@@ -80,7 +80,6 @@ sphinx:
     html_css_files:
       - css/syft.css
     html_theme_options:
-      theme_hotjar_id: "YOUR_HOTJAR_ID"
       github_url: https://github.com/callezenwaka/sphinx-syft-theme
       twitter_url: https://twitter.com/callezenwaka
       repository_url: https://github.com/callezenwaka/sphinx-syft-theme
