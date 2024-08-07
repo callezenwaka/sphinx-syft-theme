@@ -79,6 +79,9 @@ sphinx:
       # - images
     html_css_files:
       - css/syft.css
+    html_js_files:
+      # - js/initialize.js
+      - js/togglebutton.js
     html_theme_options:
       theme_hotjar_id: "YOUR_HOTJAR_ID"
       github_url: https://github.com/callezenwaka/sphinx-syft-theme
