@@ -132,9 +132,11 @@ sphinx:
               url: https://openmined.org/
             - name: OpenMined
               url: https://openmined.org/
-    # html_sidebars:
-    #   index: []
-    #   standalone: []
+    html_sidebars:
+      # index: []
+      # standalone: []
+      '**':
+        sbt-sidebar-nav.html
 
   # Source suffix configuration
   source_suffix:
