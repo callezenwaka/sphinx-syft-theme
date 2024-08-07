@@ -139,7 +139,7 @@ sphinx:
       # index: []
       # standalone: []
       '**':
-        search-field.html
+        # search-field.html
         sbt-sidebar-nav.html
 
   # Source suffix configuration
