@@ -8,3 +8,4 @@ sphinx-panels
 sphinx-inline-tabs
 sphinx-syft-theme
 sphinxext-opengraph
+sphinx_book_theme==1.1.2
