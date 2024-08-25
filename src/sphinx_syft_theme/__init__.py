@@ -45,7 +45,6 @@ def get_html_theme_path():
     theme_path = os.path.join(
         os.path.abspath(Path(__file__).parent), "theme", "sphinx_syft_theme"
     )
-    print("theme_path: ", theme_path)
     return theme_path
 
 
@@ -432,7 +431,6 @@ def setup(app: Sphinx) -> Dict[str, str]:
     """Setup the Sphinx application."""
     here = Path(__file__).parent.resolve()
     theme_path = here / "theme" / "sphinx_syft_theme"
-    print("theme_path: ", theme_path)
 
     # app.add_html_theme("sphinx_syft_theme", str(theme_path))
     app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
