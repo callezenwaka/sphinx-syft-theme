@@ -1,53 +1,163 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-# requires = ["sphinx-theme-builder >= 0.2.0a7"]
-# build-backend = "sphinx_theme_builder"
+requires = [
+  "sphinx-theme-builder @ https://github.com/pradyunsg/sphinx-theme-builder/archive/87214d0671c943992c05e3db01dca997e156e8d6.zip",
+]
+build-backend = "sphinx_theme_builder"
 
 [tool.sphinx-theme-builder]
-node-version = "16.13.2"
+node-version = "20.12.1"
 theme-name = "sphinx_syft_theme"
+additional-compiled-static-assets = [
+  "webpack-macros.html",
+  "vendor/",
+  "styles/bootstrap.css",
+  "scripts/bootstrap.js",
+  "locale/",
+  "locales/"
+]
 
-# project metadata
 [project]
 name = "sphinx-syft-theme"
-description = "A configurable sidebar-enabled Sphinx theme"
-version = "0.3.0"
+description = "Bootstrap-based Sphinx theme from the syft community"
+dynamic = ["version"]
 readme = "README.md"
-requires-python = ">=3.10"
-license = {file = "LICENSE"}
-authors = [
-  {name = "Callis Ezenwaka", email = "callis@openmined.org"},
+requires-python = ">=3.9"
+dependencies = [
+  "sphinx>=5",
+  "beautifulsoup4",
+  "docutils!=0.17.0",
+  "Babel",
+  "pygments>=2.7",
+  "accessible-pygments",
+  "typing-extensions",
 ]
+license = { file = "LICENSE" }
 maintainers = [
-  {name = "The Syft Developers", email = "info@openmined.org"},
-  {name = "Callis Ezenwaka", email = "callis@openmined.org"},
-  {name = "Irina Bejan", email = "irina@openmined.org"},
+  { name = "Callis Ezenwaka", email = "callisezenwaka@gmail.com" },
 ]
-keywords = ["sphinx", "theme", "jupyter", "notebook", "syft"]
-
 classifiers = [
-  "Development Status :: 3 - Alpha",
-  "Environment :: Web Environment",
+  "Development Status :: 5 - Production/Stable",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Framework :: Sphinx",
   "Framework :: Sphinx :: Theme",
-  "Intended Audience :: Developers",
-  "License :: OSI Approved :: Apache Software License",
+  "License :: OSI Approved :: BSD License",
   "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3",
-  "Topic :: Documentation",
-  "Topic :: Software Development :: Documentation",
 ]
 
-dependencies = ["sphinx-book-theme", "sphinx>=5.0.0,<=5.0.2"]
-
-# dynamic = ["version"]
-
 [project.urls]
-Homepage = "https://sphinx-syft-theme.readthedocs.io/"
-Documentation = "https://sphinx-syft-theme.readthedocs.io/"
-Repository = "https://github.com/callezenwaka/sphinx-syft-theme"
-Changelog = "https://sphinx-syft-theme.readthedocs.io/en/latest/changelog.html"
+"Source" = "https://github.com/callezenwaka/sphinx-syft-theme"
 
-[project.entry-points."sphinx.html_themes"]
-sphinx_syft_theme = "sphinx_syft_theme"
+[project.optional-dependencies]
+doc = [
+  "numpydoc",
+  "linkify-it-py",         # for link shortening
+  "rich",
+  "sphinxext-rediraffe",
+  "sphinx-sitemap",
+  "sphinx-autoapi>=3.0.0",
+  # For examples section
+  "myst-parser",
+  "ablog>=0.11.8",
+  "jupyter_sphinx",
+  "pandas",
+  "plotly",
+  "matplotlib",
+  "numpy",
+  "xarray",
+  "sphinx_click",
+  "sphinx-copybutton",
+  "sphinx-design",
+  "sphinx_comments",
+  "sphinx-togglebutton",
+  "sphinx_external_toc",
+  "sphinx-tabs",
+  "sphinx_thebe",
+  "sphinxcontrib-bibtex",
+  "sphinxext-opengraph",
+  "jupyterlite-sphinx",
+  "sphinxcontrib-youtube>=1.4.1",
+  "sphinx-favicon>=1.0.1",
+  "ipykernel",
+  "nbsphinx",
+  "ipyleaflet",
+  "colorama",
+  "ipywidgets",
+  "graphviz",
+  "myst_nb",
+]
+test = ["pytest", "pytest-cov", "pytest-regressions", "sphinx[test]"]
+dev = [
+  "pyyaml",
+  "pre-commit",
+  "sphinx-syft-theme[doc,test]",
+  "tox",
+  "pandoc",
+  "sphinx-theme-builder[cli]",
+]
+a11y = ["pytest-playwright"]
+i18n = ["Babel", "jinja2"]
+
+[project.entry-points]
+"sphinx.html_themes" = { sphinx_syft_theme = "sphinx_syft_theme" }
+
+[tool.doc8]
+ignore = ["D001"] # we follow a 1 line = 1 paragraph style
+
+[tool.ruff]
+fix = true
+
+[tool.ruff.lint]
+ignore = [
+  "E501", # line too long | Black take care of it
+  "D107", # Missing docstring in `__init__` | set the docstring in the class
+]
+ignore-init-module-imports = true
+select = ["E", "F", "W", "I", "D", "RUF"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.djlint]
+profile = "jinja"
+extension = "html"
+indent = 2
+max_line_length = 120
+use_gitignore = true
+format_js = true
+format_css = true
+ignore = "H006,J018,T003,H023,H025"
+
+[tool.pytest.ini_options]
+markers = "a11y: mark a test as an accessibility test"
+filterwarnings = [
+  "error",
+  'ignore:Jupyter is migrating its paths to use standard platformdirs:DeprecationWarning',
+  'ignore:The frontend\.OptionParser class will be replaced:DeprecationWarning',
+  'ignore:The frontend\.Option class will be removed:DeprecationWarning',
+  'ignore:nodes\.Node\.traverse\(\) is obsoleted by Node\.findall\(\):PendingDeprecationWarning',
+  # jupyter-client throws this
+  'ignore:datetime\.datetime\.utcfromtimestamp\(\) is deprecated:DeprecationWarning',
+  'ignore:datetime\.datetime\.utcnow\(\) is deprecated:DeprecationWarning',
+  # Sphinx triggers this
+  '''ignore:'imghdr' is deprecated and slated for removal in Python 3\.13:DeprecationWarning''',
+]
+
+[tool.coverage.run]
+source = ["sphinx_syft_theme"]
+branch = true
+relative_files = true
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+skip_covered = true
+
+[tool.coverage.paths]
+source = ["src", ".tox/py*/**/site-packages"]
