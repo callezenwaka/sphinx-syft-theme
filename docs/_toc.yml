@@ -4,6 +4,7 @@ parts:
   - chapters:
       - file: about
       - file: standalone
+      - file: changelog
 
   - caption: Tutorials
     chapters:

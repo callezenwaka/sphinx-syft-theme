@@ -31,12 +31,25 @@ from .header_buttons.source import add_source_buttons
 # Native functions
 from .persona import Persona
 
-__version__ = "0.3.2"
+__version__ = "0.3.4"
 """sphinx-syft-theme version"""
 
 SPHINX_LOGGER = logging.getLogger(__name__)
 DEFAULT_LOG_TYPE = "sphinxsyfttheme"
 MESSAGE_CATALOG_NAME = "syfttheme"
+
+
+def get_html_theme_path():
+    """Return list of HTML theme paths."""
+    # theme_path = os.path.abspath(Path(__file__).parent)
+    theme_path = os.path.join(
+        os.path.abspath(Path(__file__).parent), "theme", "sphinx_syft_theme"
+    )
+    print("theme_path: ", theme_path)
+    return theme_path
+
+
+# get_html_theme_path()
 
 
 def update_config(app):
@@ -419,8 +432,10 @@ def setup(app: Sphinx) -> Dict[str, str]:
     """Setup the Sphinx application."""
     here = Path(__file__).parent.resolve()
     theme_path = here / "theme" / "sphinx_syft_theme"
+    print("theme_path: ", theme_path)
 
-    app.add_html_theme("sphinx_syft_theme", str(theme_path))
+    # app.add_html_theme("sphinx_syft_theme", str(theme_path))
+    app.add_html_theme("sphinx_syft_theme", get_html_theme_path())
 
     # Translations
     locale_dir = os.path.join(theme_path, "static", "locales")

@@ -21,7 +21,7 @@ name = "sphinx-syft-theme"
 description = "Bootstrap-based Sphinx theme from the syft community"
 dynamic = ["version"]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
   "sphinx>=5",
   "beautifulsoup4",
@@ -32,6 +32,9 @@ dependencies = [
   "typing-extensions",
 ]
 license = { file = "LICENSE" }
+authors = [
+  {name = "Callis Ezenwaka", email = "callisezenwaka@gmail.com"},
+]
 maintainers = [
   { name = "Callis Ezenwaka", email = "callisezenwaka@gmail.com" },
 ]
@@ -49,7 +52,10 @@ classifiers = [
 ]
 
 [project.urls]
-"Source" = "https://github.com/callezenwaka/sphinx-syft-theme"
+Homepage = "https://sphinx-syft-theme.readthedocs.io/"
+Documentation = "https://sphinx-syft-theme.readthedocs.io/"
+Repository = "https://github.com/callezenwaka/sphinx-syft-theme"
+Changelog = "https://sphinx-syft-theme.readthedocs.io/en/latest/changelog.html"
 
 [project.optional-dependencies]
 doc = [
@@ -100,9 +106,6 @@ dev = [
 ]
 a11y = ["pytest-playwright"]
 i18n = ["Babel", "jinja2"]
-
-[project.entry-points]
-"sphinx.html_themes" = { sphinx_syft_theme = "sphinx_syft_theme" }
 
 [tool.doc8]
 ignore = ["D001"] # we follow a 1 line = 1 paragraph style
@@ -161,3 +164,6 @@ skip_covered = true
 
 [tool.coverage.paths]
 source = ["src", ".tox/py*/**/site-packages"]
+
+[project.entry-points."sphinx.html_themes"]
+sphinx_syft_theme = "sphinx_syft_theme"

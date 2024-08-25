@@ -128,3 +128,6 @@ src/syft_sphinx_theme/locale/*/*/*.mo
 
 # jupyterlite db
 .jupyterlite.doit.db
+
+# test setup
+.no-file
