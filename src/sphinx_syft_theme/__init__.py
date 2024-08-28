@@ -228,6 +228,7 @@ def update_and_remove_templates(
         "theme_footer_start",
         "theme_footer_center",
         "theme_footer_end",
+        "theme_feedback_form",
         "theme_primary_sidebar_end",
         # "theme_secondary_sidebar_items",
         "sidebars",

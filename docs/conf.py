@@ -32,38 +32,30 @@ author = "Syft Theme Maintainer"
 # -- General configuration ---------------------------------------------------
 
 extensions = [
+    "autoapi.extension",
+    "myst_nb",
+    "numpydoc",
     "sphinx.ext.napoleon",
     "sphinx.ext.autodoc",
-    # "sphinx.ext.autosummary",
+    "sphinx.ext.autosummary",
     "sphinx.ext.todo",
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
-    "sphinx.ext.graphviz",
-    "sphinxext.rediraffe",
-    "sphinx_design",
-    "sphinx_copybutton",
-    "autoapi.extension",
-    # custom extentions
-    # "_extension.gallery_directive",
-    # "_extension.component_directive",
-    # For extension examples and demos
-    "myst_parser",
-    "ablog",
-    "jupyter_sphinx",
-    "sphinxcontrib.youtube",
-    "nbsphinx",
-    "numpydoc",
+    # "sphinx.ext.graphviz",
+    # "jupyterlite_sphinx",
+    # "jupyter_sphinx",
     "sphinx_togglebutton",
-    "jupyterlite_sphinx",
     "sphinx_favicon",
-    # "myst_nb",
+    "sphinx_copybutton",
     "sphinx_click.ext",
     "sphinx_comments",
+    "sphinx_design",
     "sphinx_external_toc",
-    # "sphinx_tabs.tabs",
     "sphinx_thebe",
     "sphinxcontrib.bibtex",
+    "sphinxcontrib.youtube",
     "sphinxext.opengraph",
+    "sphinxext.rediraffe",
 ]
 
 jupyterlite_config = "jupyterlite_config.json"
@@ -155,8 +147,8 @@ html_last_updated_fmt = ""  # to reveal the build date in the pages meta
 # Theme options
 html_theme_options = {
     "analytics": {
-        "plausiable__analytics_domain": "foo",
-        "plausible__analytics_url": '<script defer="defer"> data-domain=toto src=http://.../script.js </script>,',
+        "plausible_analytics_domain": "bar.foo.com",
+        "plausible_analytics_url": "https://plausible.io/js/script.js",
     },
     "header_links_before_dropdown": 4,
     "navbar_links": [

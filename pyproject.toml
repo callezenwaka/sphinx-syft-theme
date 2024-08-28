@@ -23,9 +23,9 @@ dynamic = ["version"]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-  "sphinx>=5",
+  "sphinx==7.4.7",
   "beautifulsoup4",
-  "docutils!=0.17.0",
+  "docutils>=0.21.0",
   "Babel",
   "pygments>=2.7",
   "accessible-pygments",
@@ -59,21 +59,23 @@ Changelog = "https://sphinx-syft-theme.readthedocs.io/en/latest/changelog.html"
 
 [project.optional-dependencies]
 doc = [
-  "numpydoc",
+  "colorama",
   "linkify-it-py",         # for link shortening
   "rich",
-  "sphinxext-rediraffe",
-  "sphinx-sitemap",
-  "sphinx-autoapi>=3.0.0",
   # For examples section
   "myst-parser",
-  "ablog>=0.11.8",
+  "myst_nb",
+  "ipykernel",
+  "ipyleaflet",
+  "ipywidgets",
+  "jupyterlite-sphinx",
   "jupyter_sphinx",
+  "matplotlib",
+  "nbclient",
+  "numpydoc",
+  "numpy",
   "pandas",
   "plotly",
-  "matplotlib",
-  "numpy",
-  "xarray",
   "sphinx_click",
   "sphinx-copybutton",
   "sphinx-design",
@@ -82,20 +84,21 @@ doc = [
   "sphinx_external_toc",
   "sphinx-tabs",
   "sphinx_thebe",
+  "sphinx-sitemap",
+  "sphinx-autoapi>=3.0.0",
+  "sphinxext-rediraffe",
   "sphinxcontrib-bibtex",
   "sphinxext-opengraph",
-  "jupyterlite-sphinx",
   "sphinxcontrib-youtube>=1.4.1",
   "sphinx-favicon>=1.0.1",
-  "ipykernel",
-  "nbsphinx",
-  "ipyleaflet",
-  "colorama",
-  "ipywidgets",
-  "graphviz",
-  "myst_nb",
+  "xarray",
 ]
-test = ["pytest", "pytest-cov", "pytest-regressions", "sphinx[test]"]
+test = [
+  "pytest", 
+  "pytest-cov", 
+  "pytest-regressions", 
+  "sphinx[test]"
+]
 dev = [
   "pyyaml",
   "pre-commit",
@@ -150,6 +153,10 @@ filterwarnings = [
   'ignore:datetime\.datetime\.utcnow\(\) is deprecated:DeprecationWarning',
   # Sphinx triggers this
   '''ignore:'imghdr' is deprecated and slated for removal in Python 3\.13:DeprecationWarning''',
+  # Sass deprecation warning
+  "ignore:Sass's behavior for declarations that appear after nested rules will be changing:DeprecationWarning",
+  'WARNING: [Social card] image cannot be an SVG image, skipping...',
+  "ignore:autosummary: stub file not found 'urllib.parse.DefragResult.index'.:UserWarning",
 ]
 
 [tool.coverage.run]
@@ -165,5 +172,5 @@ skip_covered = true
 [tool.coverage.paths]
 source = ["src", ".tox/py*/**/site-packages"]
 
-[project.entry-points."sphinx.html_themes"]
-sphinx_syft_theme = "sphinx_syft_theme"
+[project.entry-points]
+"sphinx.html_themes" = { sphinx_syft_theme = "sphinx_syft_theme" }

@@ -693,6 +693,7 @@ function setupMobileSidebarKeyboardHandlers() {
     ".sidebar-secondary-toggle",
   );
   const secondaryClickTransmitter = document.querySelector(".secondary-toggle");
+
   [
     [primarySidebarClickTransmitter, primaryToggle, primarySidebar],
     [secondarySidebarClickTransmitter, primaryToggle, primarySidebar],
