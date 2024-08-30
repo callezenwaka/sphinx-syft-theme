@@ -189,7 +189,9 @@ function addNoPrint() {
  * Handle feedback submission
  */
 async function addFeedback() {
+  // TODO:
   const feedbackTitle = document.getElementById("feedback--title");
+  if (!feedbackTitle) return;
   feedbackTitle.addEventListener("click", toggleFeebackForm);
 
   const feedbackForm = document.querySelector("#feedback--form");
@@ -240,11 +242,13 @@ function toggleFeebackForm(event) {
  */
 function addScrollEvent() {
   // TODO:
+  const FEEDBACK_KEY = "syft-feedback";
   document.addEventListener("scroll", function (event) {
     const feedbackContainer = document.getElementById("feedback--container");
+    if (!feedbackContainer) return;
 
     // Retrieve the value (convert back to boolean)
-    const FEEDBACK = JSON.parse(localStorage.getItem("syft-feedback")) || false;
+    const FEEDBACK = JSON.parse(localStorage.getItem(FEEDBACK_KEY)) || false;
     const isFormActive = feedbackContainer.classList.contains("active");
     const scrollPosition = window.scrollY + window.innerHeight;
     const threshold = document.documentElement.scrollHeight * 0.95;
@@ -256,7 +260,7 @@ function addScrollEvent() {
       toggleFeebackForm(event);
 
       // Set a boolean value
-      localStorage.setItem("syft-feedback", true);
+      localStorage.setItem(FEEDBACK_KEY, true);
     }
   });
 }

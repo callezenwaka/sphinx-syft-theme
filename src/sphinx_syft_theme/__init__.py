@@ -228,7 +228,7 @@ def update_and_remove_templates(
         "theme_footer_start",
         "theme_footer_center",
         "theme_footer_end",
-        "theme_feedback_form",
+        # "theme_feedback_form",
         "theme_primary_sidebar_end",
         # "theme_secondary_sidebar_items",
         "sidebars",
@@ -289,6 +289,13 @@ def update_and_remove_templates(
     # Translations
     translation = get_translation(MESSAGE_CATALOG_NAME)
     context["translate"] = translation
+
+    # Retrieve the author value from the Sphinx configuration
+    author = app.config.author
+
+    # Add the author to the context if it exists, is not empty, and is not "unknown"
+    if author and author.strip() and author.lower() != "unknown":
+        context["author"] = author
 
     # Update version number for the "made with version..." component
     context["theme_version"] = __version__

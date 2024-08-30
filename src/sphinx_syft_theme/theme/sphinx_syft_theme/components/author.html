@@ -1,5 +1,6 @@
+<!-- {# Displays the author information (which is defined in conf.py). #} -->
 {% if author %}
-<p class="component-author">
-{{ translate('By') }} {{ author }}
-</p>
+	<p class="author">
+		{{ translate('By') }} {{ author }}
+	</p>
 {% endif %}

@@ -26,7 +26,7 @@ sys.path.append(str(Path(".").resolve()))
 # -- Project information -----------------------------------------------------
 
 project = "Syft Theme"
-copyright = f"{current_year}, Sphinx Syft Theme"
+copyright = f"{current_year}"
 author = "Syft Theme Maintainer"
 
 # -- General configuration ---------------------------------------------------
