@@ -72,7 +72,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "**.ipynb_checkpoints", 
 
 intersphinx_mapping = {"sphinx": ("https://www.sphinx-doc.org/en/master", None)}
 
-external_toc_path = "_toc.yml"  # optional, default: _toc.yml
+external_toc_path = "toc.yml"  # optional, default: _toc.yml
 external_toc_exclude_missing = False  # optional, default: False
 
 # -- Sitemap -----------------------------------------------------------------
@@ -197,6 +197,8 @@ html_theme_options = {
     },
     "use_edit_page_button": True,
     "show_sidebar_on_root_doc": True,  # or False
+    "show_feedback_form": True,  # Disable feedback form
+    "feedback": "feedback",
     "home_page_in_toc": True,
     "show_toc_level": 2,
     "navbar_align": "content",  # [left, content, right] For testing that the navbar items align properly
@@ -247,8 +249,8 @@ rediraffe_redirects = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
-html_css_files = ["css/custom.css"]
-html_js_files = ["js/syft-icon.js", "js/custom-icon.js"]
+html_css_files = ["css/syft-theme.css"]
+html_js_files = ["js/syft-theme.js", "js/syft-icon.js", "js/custom-icon.js"]
 todo_include_todos = True
 
 # -- favicon options ---------------------------------------------------------

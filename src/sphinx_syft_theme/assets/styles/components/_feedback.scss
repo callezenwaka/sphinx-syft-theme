@@ -6,6 +6,7 @@
   background-color: var(--pst-color-background);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  overflow: hidden;
   bottom: 0%;
   box-shadow:
     0 8px 24px hsl(210deg 8% 62% / 70%),
@@ -16,7 +17,7 @@
   padding: 1rem;
   position: fixed;
   right: 10px;
-  transform: translateY(85%);
+  transform: translateY(90%);
   transition: transform 0.5s ease-in-out;
   z-index: 10;
 
@@ -156,14 +157,57 @@
   }
 }
 
+.feedback--wrapper {
+  max-height: 400px;
+  max-width: 350px;
+  min-width: 350px;
+  overflow: hidden;
+  position: relative; /* Add this */
+  overflow-y: auto; /* Changed back to auto */
+  // -webkit-overflow-scrolling: touch; /* Enables momentum scrolling on iOS */
+
+  /* For WebKit browsers (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    width: 10px;
+
+    /* Width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--pst-color-background);
+
+    /* Color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--pst-color-text-base);
+
+    /* Color of the scroll thumb */
+    border-radius: 5px;
+
+    /* Rounded corners on the thumb */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+    /* Color of the thumb on hover */
+  }
+
+  /* For Firefox */
+  // scrollbar-width: thin;
+  // scrollbar-color: #888 #f1f1f1;
+}
+
 .feedback--title {
   display: flex;
   flex-wrap: wrap;
-  height: 40px;
   place-content: center space-between;
   align-items: center;
-  cursor: pointer;
+  height: 40px;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--pst-color-border);
+  cursor: pointer;
 }
 
 .feedback--text {
@@ -205,6 +249,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 0.5rem;
+  padding-right: 10px; /* Adjust based on scrollbar width */
 }
 
 .form--item {
@@ -219,6 +264,13 @@
     flex-direction: row;
     column-gap: 10px;
   }
+}
+
+.form--conditional {
+  margin-top: 10px;
+  display: none;
+
+  /* Hidden by default */
 }
 
 .form--label {
