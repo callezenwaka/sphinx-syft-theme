@@ -56,6 +56,8 @@ extensions = [
     "sphinxcontrib.youtube",
     "sphinxext.opengraph",
     "sphinxext.rediraffe",
+    # custom extentions
+    "_extension.launch_demo",
 ]
 
 jupyterlite_config = "jupyterlite_config.json"
@@ -116,6 +118,8 @@ blog_authors = {
     "jupyter": ("Jupyter", "https://jupyter.org"),
 }
 
+# -- Configure the JupyterHub base URL and your repository URL ---------------
+jupyter_hub_url = "https://jupyter.org"
 
 # -- sphinx_ext_graphviz options ---------------------------------------------
 

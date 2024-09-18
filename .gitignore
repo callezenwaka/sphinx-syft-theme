@@ -131,3 +131,6 @@ src/syft_sphinx_theme/locale/*/*/*.mo
 
 # test setup
 .no-file
+
+# unused files
+_contents
