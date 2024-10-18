@@ -30,6 +30,7 @@ from .header_buttons.source import add_source_buttons
 
 # Native functions
 from .persona import Persona
+from .release_type import ReleaseTypeTransform
 
 __version__ = "0.3.4"
 """sphinx-syft-theme version"""
@@ -451,6 +452,7 @@ def setup(app: Sphinx) -> Dict[str, str]:
 
     # From old syft-theme
     app.add_transform(Persona)
+    app.add_transform(ReleaseTypeTransform)
 
     # From pythia-theme
     app.add_directive("banner", Banner)

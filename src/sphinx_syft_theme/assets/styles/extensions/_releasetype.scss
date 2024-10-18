@@ -1,0 +1,154 @@
+/**
+ * Release type 
+ * 
+ */
+
+/* General icon styling */
+
+/* General settings for all icons */
+.icon {
+  --size: var(--icon-size, 1rem);
+
+  display: inline-block;
+  flex-shrink: 0;
+  height: var(--size);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  vertical-align: middle;
+  width: var(--size);
+}
+
+.icon.icon-experimental {
+  --note-theme: #5e9eff;
+
+  background-color: var(--note-theme);
+  mask-image: url("/_static/images/experimental.svg");
+}
+
+.icon.icon-deprecating {
+  --note-theme: #ff707f;
+
+  background-color: var(--note-theme);
+  mask-image: url("/_static/images/deprecating.svg");
+}
+
+.icon.icon-beta {
+  --note-theme: #e3642a;
+
+  background-color: var(--note-theme);
+  mask-image: url("/_static/images/beta.svg");
+}
+
+.sidebar .icon {
+  align-self: center;
+  background-size: 14px;
+  height: 14px;
+  margin-right: -0.25rem;
+  mask-size: 14px;
+  width: 14px;
+}
+
+.sidebar .icon-experimental,
+.sidebar .icon-nonstandard {
+  background-color: var(--icon-information);
+}
+
+.sidebar ol li .icon {
+  margin-right: 0.01em;
+}
+
+.visually-hidden {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
+
+// notecard
+.notecard {
+  --note-background: var(--background-information);
+  --note-theme: var(--icon-information);
+
+  background-color: var(--note-background);
+  border-left: 2px solid var(--note-theme);
+  border-radius: var(--elem-radius);
+  box-shadow: var(--shadow-01);
+  margin: 1rem 0;
+  padding: 1rem 1rem 1rem 3rem;
+  position: relative;
+}
+
+.notecard,
+.notecard li,
+.notecard p {
+  color: var(--text-secondary);
+}
+
+.notecard:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.notecard:first-of-type {
+  margin-top: 2rem;
+}
+
+.notecard::before {
+  // background-color: var(--note-theme);
+  // background-color: var(--pst-color-text-base);
+  content: "";
+  display: block;
+  height: 1rem;
+  left: 1rem;
+  mask-image: url("/_static/images/note-info.svg");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 1.35rem;
+  width: 1rem;
+}
+
+.notecard.experimental {
+  --background-information: #0085f21a;
+  --note-theme: #5e9eff;
+  --note-background: var(--background-information);
+}
+
+.notecard.deprecating {
+  --background-critical: #d300381a;
+  --note-theme: #ff707f;
+  --note-background: var(--background-critical);
+}
+
+.notecard.beta {
+  --background-stable: #ffd7001a;
+  --note-background: var(--background-stable);
+  --note-theme: #e3642a;
+}
+
+.notecard.experimental::before {
+  background-color: var(--note-theme);
+  mask-image: url("/_static/images/experimental.svg");
+}
+
+.notecard.deprecating::before {
+  background-color: var(--note-theme);
+  mask-image: url("/_static/images/deprecating.svg");
+}
+
+.notecard.beta::before {
+  background-color: var(--note-theme);
+  mask-image: url("/_static/images/beta.svg");
+}
+
+b,
+strong {
+  font-weight: var(--font-body-strong-weight);
+  letter-spacing: 0.02rem;
+}
