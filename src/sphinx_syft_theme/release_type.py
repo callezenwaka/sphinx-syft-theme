@@ -34,7 +34,6 @@ class ReleaseTypeTransform(SphinxTransform):
         """Apply release type transformation."""
         # Get release types from theme configuration
         release_types = self.app.config.html_theme_options.get("release_types", {})
-        print("############# release_types ###############: ", release_types)
         release_keywords = self.app.config.html_theme_options.get(
             "release_keywords", []
         )
