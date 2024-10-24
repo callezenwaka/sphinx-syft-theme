@@ -209,6 +209,12 @@ html_theme_options = {
     "show_nav_level": 2,
     "announcement": f"⚠️This is an experimental release <a href='https://pypi.org/project/sphinx-syft-theme/{__version__}/' target='_blank'>sphinx-syft-theme</a> ⚠️",
     "show_version_warning_banner": True,
+    "release_keywords": ["beta", "experimental", "deprecated"],
+    "release_types": {
+        "beta": "Beta, subject to changes.",
+        "experimental": "Experimental, expect behavior to change.",
+        "deprecated": "Deprecated, not-recommended for use.",
+    },
     # "navbar_center": ["version-switcher", "navbar-menu"],
     # "navbar_start": ["navbar-logo"],
     # "navbar_end": ["theme-switcher", "navbar-icon-links"],

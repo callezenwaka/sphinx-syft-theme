@@ -25,11 +25,11 @@
   mask-image: url("/_static/images/experimental.svg");
 }
 
-.icon.icon-deprecating {
+.icon.icon-deprecated {
   --note-theme: #ff707f;
 
   background-color: var(--note-theme);
-  mask-image: url("/_static/images/deprecating.svg");
+  mask-image: url("/_static/images/deprecated.svg");
 }
 
 .icon.icon-beta {
@@ -88,15 +88,16 @@
 .notecard li,
 .notecard p {
   color: var(--text-secondary);
+  margin: 0%;
 }
 
-.notecard:last-of-type {
-  margin-bottom: 2rem;
-}
+// .notecard:last-of-type {
+//   margin-bottom: 2rem;
+// }
 
-.notecard:first-of-type {
-  margin-top: 2rem;
-}
+// .notecard:first-of-type {
+//   margin-top: 2rem;
+// }
 
 .notecard::before {
   // background-color: var(--note-theme);
@@ -120,7 +121,7 @@
   --note-background: var(--background-information);
 }
 
-.notecard.deprecating {
+.notecard.deprecated {
   --background-critical: #d300381a;
   --note-theme: #ff707f;
   --note-background: var(--background-critical);
@@ -137,9 +138,9 @@
   mask-image: url("/_static/images/experimental.svg");
 }
 
-.notecard.deprecating::before {
+.notecard.deprecated::before {
   background-color: var(--note-theme);
-  mask-image: url("/_static/images/deprecating.svg");
+  mask-image: url("/_static/images/deprecated.svg");
 }
 
 .notecard.beta::before {

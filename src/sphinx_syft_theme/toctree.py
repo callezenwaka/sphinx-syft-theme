@@ -15,8 +15,12 @@ from sphinx.addnodes import toctree as TocTreeNodeClass
 from sphinx.application import Sphinx
 from sphinx.environment.adapters.toctree import TocTree
 from sphinx.locale import _
+from sphinx.util import logging
 
+from .release_type import create_icon_html
 from .utils import traverse_or_findall
+
+logger = logging.getLogger(__name__)
 
 
 def add_inline_math(node: Node) -> str:
@@ -309,7 +313,11 @@ def add_toctree_functions(
     # somehow runs this twice in some circumstances in unpredictable ways.
     @cache
     def generate_toctree_html(
-        kind: str, startdepth: int = 1, show_nav_level: int = 1, **kwargs
+        kind: str,
+        startdepth: int = 1,
+        show_nav_level: int = 1,
+        add_release_icons: bool = False,
+        **kwargs,
     ) -> Union[BeautifulSoup, str]:
         """Return the navigation link structure in HTML.
 
@@ -354,6 +362,33 @@ def add_toctree_functions(
             html_toctree = app.builder.render_partial(toctree_element)["fragment"]
 
         soup = BeautifulSoup(html_toctree, "html.parser")
+
+        if add_release_icons:
+            try:
+                # Get the current Sphinx app instance
+                # app = Sphinx.get_current_app()
+                print("here")
+
+                # Get configurations from theme options
+                release_types = app.config.html_theme_options.get("release_types", {})
+                release_keywords = app.config.html_theme_options.get(
+                    "release_keywords", []
+                )
+
+                # Check if both configs exist
+                if release_types and release_keywords:
+                    for a in soup.find_all("a"):
+                        text = a.get_text()
+                        for keyword in release_keywords:
+                            if f"-{keyword}-" in text:
+                                # Remove the keyword from the link text
+                                a.string = text.replace(f"-{keyword}-", "").strip()
+                                # Create and insert the icon
+                                icon_html = create_icon_html(keyword, app)
+                                icon_soup = BeautifulSoup(icon_html, "html.parser")
+                                a.insert_after(icon_soup)
+            except Exception as e:
+                logger.warning(f"Could not add release icons: {e!s}")
 
         # pair "current" with "active" since that's what we use w/ bootstrap
         for li in soup("li", {"class": "current"}):
