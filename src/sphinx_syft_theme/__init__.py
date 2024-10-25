@@ -32,7 +32,7 @@ from .header_buttons.source import add_source_buttons
 from .persona import Persona
 from .release_type import ReleaseTypeTransform
 
-__version__ = "0.3.4"
+__version__ = "0.3.5"
 """sphinx-syft-theme version"""
 
 SPHINX_LOGGER = logging.getLogger(__name__)

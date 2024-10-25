@@ -11,6 +11,7 @@ def create_icon_html(keyword, app):
     """Create icon html for the sidebar."""
     icon_class = f"icon-{keyword}"
     release_types = app.config.html_theme_options.get("release_types", {})
+    print("release_types: ", release_types)
     title_text = release_types.get(keyword, "")
 
     return f'<abbr class="icon {icon_class}" title="{title_text}"><span class="visually-hidden">{keyword.capitalize()}</span></abbr>'

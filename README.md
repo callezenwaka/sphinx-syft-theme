@@ -42,6 +42,12 @@ build-backend = "setuptools.build_meta"
 name = "sphinx-syft-theme"
 description = "Bootstrap-based Sphinx theme from the syft community"
 dynamic = ["version"]
+authors = [
+{name = "Callis Ezenwaka", email = "callisezenwaka@gmail.com"},
+]
+maintainers = [
+{ name = "Callis Ezenwaka", email = "callisezenwaka@gmail.com" },
+]
 
 [tool.setuptools_scm]
 version_scheme = "post-release"
