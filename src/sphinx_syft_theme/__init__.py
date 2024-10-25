@@ -448,11 +448,12 @@ def setup(app: Sphinx) -> Dict[str, str]:
     locale_dir = os.path.join(theme_path, "static", "locales")
     app.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
 
+    app.add_transform(ReleaseTypeTransform)
     app.add_post_transform(short_link.ShortenLinkTransform)
 
     # From old syft-theme
     app.add_transform(Persona)
-    app.add_transform(ReleaseTypeTransform)
+    # app.add_transform(ReleaseTypeTransform)
 
     # From pythia-theme
     app.add_directive("banner", Banner)
