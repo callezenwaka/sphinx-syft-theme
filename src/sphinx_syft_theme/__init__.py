@@ -29,7 +29,7 @@ from .header_buttons.launch import add_launch_buttons
 from .header_buttons.source import add_source_buttons
 
 # Native functions
-from .persona import Persona
+from .persona import PersonaTransform
 from .release_type import ReleaseTypeTransform
 
 __version__ = "0.3.5"
@@ -47,9 +47,6 @@ def get_html_theme_path():
         os.path.abspath(Path(__file__).parent), "theme", "sphinx_syft_theme"
     )
     return theme_path
-
-
-# get_html_theme_path()
 
 
 def update_config(app):
@@ -448,12 +445,11 @@ def setup(app: Sphinx) -> Dict[str, str]:
     locale_dir = os.path.join(theme_path, "static", "locales")
     app.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
 
-    app.add_transform(ReleaseTypeTransform)
     app.add_post_transform(short_link.ShortenLinkTransform)
 
     # From old syft-theme
-    app.add_transform(Persona)
-    # app.add_transform(ReleaseTypeTransform)
+    app.add_transform(PersonaTransform)
+    app.add_transform(ReleaseTypeTransform)
 
     # From pythia-theme
     app.add_directive("banner", Banner)

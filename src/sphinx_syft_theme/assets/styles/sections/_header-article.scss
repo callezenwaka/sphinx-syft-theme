@@ -32,7 +32,7 @@
 button.sidebar-toggle.primary-toggle.sidebar-primary-toggle {
   display: none;
 
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: $breakpoint-xl) {
     display: inline-block;
     padding: 0;
   }

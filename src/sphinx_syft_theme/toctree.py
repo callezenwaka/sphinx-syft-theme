@@ -316,7 +316,6 @@ def add_toctree_functions(
         kind: str,
         startdepth: int = 1,
         show_nav_level: int = 1,
-        add_release_icons: bool = False,
         **kwargs,
     ) -> Union[BeautifulSoup, str]:
         """Return the navigation link structure in HTML.
@@ -363,30 +362,23 @@ def add_toctree_functions(
 
         soup = BeautifulSoup(html_toctree, "html.parser")
 
-        if add_release_icons:
+        # Get configurations from theme options
+        release_keywords = app.config.html_theme_options.get("release_keywords", [])
+        release_types = app.config.html_theme_options.get("release_types", {})
+
+        # Check if both configs exist
+        if release_keywords and release_types:
             try:
-                # Get the current Sphinx app instance
-                # app = Sphinx.get_current_app()
-                print("here")
-
-                # Get configurations from theme options
-                release_types = app.config.html_theme_options.get("release_types", {})
-                release_keywords = app.config.html_theme_options.get(
-                    "release_keywords", []
-                )
-
-                # Check if both configs exist
-                if release_types and release_keywords:
-                    for a in soup.find_all("a"):
-                        text = a.get_text()
-                        for keyword in release_keywords:
-                            if f"-{keyword}-" in text:
-                                # Remove the keyword from the link text
-                                a.string = text.replace(f"-{keyword}-", "").strip()
-                                # Create and insert the icon
-                                icon_html = create_icon_html(keyword, app)
-                                icon_soup = BeautifulSoup(icon_html, "html.parser")
-                                a.insert_after(icon_soup)
+                for a in soup.find_all("a"):
+                    text = a.get_text()
+                    for keyword in release_keywords:
+                        if f"-{keyword}-" in text:
+                            # Remove the keyword from the link text
+                            a.string = text.replace(f"-{keyword}-", "").strip()
+                            # Create and insert the icon
+                            icon_html = create_icon_html(keyword, app)
+                            icon_soup = BeautifulSoup(icon_html, "html.parser")
+                            a.insert_after(icon_soup)
             except Exception as e:
                 logger.warning(f"Could not add release icons: {e!s}")
 

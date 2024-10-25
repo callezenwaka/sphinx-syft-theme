@@ -11,7 +11,6 @@ def create_icon_html(keyword, app):
     """Create icon html for the sidebar."""
     icon_class = f"icon-{keyword}"
     release_types = app.config.html_theme_options.get("release_types", {})
-    print("release_types: ", release_types)
     title_text = release_types.get(keyword, "")
 
     return f'<abbr class="icon {icon_class}" title="{title_text}"><span class="visually-hidden">{keyword.capitalize()}</span></abbr>'
@@ -21,7 +20,7 @@ def create_notecard_html(keyword, title_text):
     """Create notcard html for the main content."""
     return (
         f'<section class="notecard {keyword}" id="sect1">'
-        f"<p><strong>{keyword.capitalize()}:</strong> <strong>This is {title_text.lower()}</strong></p>"
+        f"<p><strong>{keyword.capitalize()}:</strong> <strong>{title_text.capitalize()}</strong></p>"
         f"</section>"
     )
 

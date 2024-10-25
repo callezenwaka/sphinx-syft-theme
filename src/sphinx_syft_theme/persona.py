@@ -36,7 +36,7 @@ def convert_shortcodes_to_nodes(node, shortcode_to_image):
             convert_shortcodes_to_nodes(child, shortcode_to_image)
 
 
-class Persona(SphinxTransform):
+class PersonaTransform(SphinxTransform):
     """A Persona directive for use with headers."""
 
     default_priority = 211
