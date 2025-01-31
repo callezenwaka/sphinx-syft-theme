@@ -22,21 +22,21 @@
   --note-theme: #5e9eff;
 
   background-color: var(--note-theme);
-  mask-image: url("/_static/images/experimental.svg");
+  mask-image: url("_static/images/experimental.svg");
 }
 
 .icon.icon-deprecated {
   --note-theme: #ff707f;
 
   background-color: var(--note-theme);
-  mask-image: url("/_static/images/deprecated.svg");
+  mask-image: url("_static/images/deprecated.svg");
 }
 
 .icon.icon-beta {
   --note-theme: #e3642a;
 
   background-color: var(--note-theme);
-  mask-image: url("/_static/images/beta.svg");
+  mask-image: url("_static/images/beta.svg");
 }
 
 .sidebar .icon {
@@ -106,7 +106,7 @@
   display: block;
   height: 1rem;
   left: 1rem;
-  mask-image: url("/_static/images/note-info.svg");
+  mask-image: url("_static/images/note-info.svg");
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: contain;
@@ -135,17 +135,17 @@
 
 .notecard.experimental::before {
   background-color: var(--note-theme);
-  mask-image: url("/_static/images/experimental.svg");
+  mask-image: url("_static/images/experimental.svg");
 }
 
 .notecard.deprecated::before {
   background-color: var(--note-theme);
-  mask-image: url("/_static/images/deprecated.svg");
+  mask-image: url("_static/images/deprecated.svg");
 }
 
 .notecard.beta::before {
   background-color: var(--note-theme);
-  mask-image: url("/_static/images/beta.svg");
+  mask-image: url("_static/images/beta.svg");
 }
 
 b,
