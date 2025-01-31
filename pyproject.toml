@@ -83,7 +83,6 @@ doc = [
   "sphinx-togglebutton",
   "sphinx_external_toc",
   "sphinx-tabs",
-  "sphinx_thebe",
   "sphinx-sitemap",
   "sphinx-autoapi>=3.0.0",
   "sphinxext-rediraffe",
