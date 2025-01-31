@@ -1,14 +1,23 @@
 version: 2
+
 formats:
   - htmlzip
+  # - epub
+  - pdf
 
 # build with latest available ubuntu version
 build:
-  os: ubuntu-20.04
+  os: ubuntu-22.04
   tools:
     python: "3.10"
 
 python:
   install:
+    # - requirements: ./requirements.txt
     - method: pip
       path: .[doc]
+
+sphinx:
+  builder: html
+  configuration: docs/conf.py
+  fail_on_warning: false
