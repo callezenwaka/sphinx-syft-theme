@@ -11,6 +11,12 @@ scripts/bootstrap.js.map
 styles/bootstrap.css
 styles/bootstrap.css.map
 
+# theme generated webpack outputs
+scripts/header-buttons.js
+scripts/header-buttons.js.map
+styles/header-buttons.css
+styles/header-buttons.css.map
+
 # webpack files
 webpack-macros.html
 vendor/*
