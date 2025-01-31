@@ -51,7 +51,7 @@ extensions = [
     "sphinx_comments",
     "sphinx_design",
     "sphinx_external_toc",
-    "sphinx_thebe",
+    # "sphinx_thebe",
     "sphinxcontrib.bibtex",
     "sphinxcontrib.youtube",
     "sphinxext.opengraph",
